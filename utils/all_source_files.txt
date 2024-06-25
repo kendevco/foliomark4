@@ -1,0 +1,5092 @@
+// .prettierrc.json
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "semi": false
+}
+
+
+// components.json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src\\app\\(app)\\globals.scss",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+
+// next-env.d.ts
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+
+
+// package.json
+{
+  "name": "next-latest-starter-kendev",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devturbo": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbo",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "ci": "payload migrate && pnpm build",
+    "generate:types": "payload generate:types",
+    "generate:schema": "payload-graphql generate:schema",
+    "standalone-script": "node ./src/scripts/standalone-script.js"
+  },
+  "engines": {
+    "node": "^18.20.2 || >=20.9.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.583.0",
+    "@aws-sdk/credential-provider-env": "^3.577.0",
+    "@aws-sdk/lib-storage": "^3.583.0",
+    "@payloadcms/db-mongodb": "3.0.0-beta.52",
+    "@payloadcms/db-postgres": "3.0.0-beta.52",
+    "@payloadcms/next": "3.0.0-beta.52",
+    "@payloadcms/richtext-lexical": "3.0.0-beta.52",
+    "@payloadcms/richtext-slate": "3.0.0-beta.52",
+    "@payloadcms/storage-s3": "3.0.0-beta.52",
+    "@payloadcms/ui": "3.0.0-beta.52",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@react-email/components": "^0.0.17",
+    "@react-email/tailwind": "^0.0.16",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^11.2.4",
+    "graphql": "^16.8.2",
+    "lucide-react": "^0.378.0",
+    "next": "15.0.0-rc.0",
+    "payload": "3.0.0-beta.52",
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "react-email": "^2.1.2",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.10.2",
+    "react-vertical-timeline-component": "^3.6.0",
+    "resend": "^3.2.0",
+    "sharp": "0.32.6",
+    "slate": "^0.103.0",
+    "slate-react": "^0.104.0",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@payloadcms/graphql": "3.0.0-beta.52",
+    "@types/node": "^20.14.5",
+    "@types/react": "npm:types-react@19.0.0-beta.2",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
+    "@types/react-vertical-timeline-component": "^3.3.6",
+    "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "15.0.0-rc.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-beta.2",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2"
+    }
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-beta.2",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2"
+  }
+}
+
+
+// postcss.config.js
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+
+// README.md
+# Payload Blank Template
+
+A blank template for [Payload](https://github.com/payloadcms/payload) to help you get up and running quickly. This repo may have been created by running `npx create-payload-app@latest` and selecting the "blank" template or by cloning this template on [Payload Cloud](https://payloadcms.com/new/clone/blank).
+
+See the official [Examples Directory](https://github.com/payloadcms/payload/tree/main/examples) for details on how to use Payload in a variety of different ways.
+
+## Development
+
+To spin up the project locally, follow these steps:
+
+1. First clone the repo
+1. Then `cd YOUR_PROJECT_REPO && cp .env.example .env`
+1. Next `yarn && yarn dev` (or `docker-compose up`, see [Docker](#docker))
+1. Now `open http://localhost:3000/admin` to access the admin panel
+1. Create your first admin user using the form on the page
+
+That's it! Changes made in `./src` will be reflected in your app.
+
+### Docker
+
+Alternatively, you can use [Docker](https://www.docker.com) to spin up this project locally. To do so, follow these steps:
+
+1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
+1. Next run `docker-compose up`
+1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+
+That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+
+## Production
+
+To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
+
+1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
+1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
+
+### Deployment
+
+The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
+
+## Questions
+
+If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+
+
+// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}
+
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@payload-config": [
+        "./src/payload.config.ts"
+      ]
+    },
+    "target": "ES2017"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "**/*.js",
+    "**/*.jsx",
+     "utils/extractData.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+
+
+// react-email-starter\package.json
+{
+  "name": "emails",
+  "version": "0.0.19",
+  "private": true,
+  "scripts": {
+    "build": "email build",
+    "dev": "email dev",
+    "export": "email export"
+  },
+  "dependencies": {
+    "@react-email/components": "0.0.17",
+    "react-email": "2.1.2",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.33",
+    "@types/react-dom": "18.2.14"
+  }
+}
+
+
+// react-email-starter\readme.md
+# React Email Starter
+
+A live preview right in your browser so you don't need to keep sending real emails during development.
+
+## Getting Started
+
+First, install the dependencies:
+
+```sh
+npm install
+# or
+yarn
+```
+
+Then, run the development server:
+
+```sh
+npm run dev
+# or
+yarn dev
+```
+
+Open [localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## License
+
+MIT License
+
+
+// react-email-starter\emails\notion-magic-link.tsx
+import {
+  Body,
+  Container,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Text,
+} from "@react-email/components";
+import * as React from "react";
+
+interface NotionMagicLinkEmailProps {
+  loginCode?: string;
+}
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
+
+export const NotionMagicLinkEmail = ({
+  loginCode,
+}: NotionMagicLinkEmailProps) => (
+  <Html>
+    <Head />
+    <Preview>Log in with this magic link</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Heading style={h1}>Login</Heading>
+        <Link
+          href="https://notion.so"
+          target="_blank"
+          style={{
+            ...link,
+            display: "block",
+            marginBottom: "16px",
+          }}
+        >
+          Click here to log in with this magic link
+        </Link>
+        <Text style={{ ...text, marginBottom: "14px" }}>
+          Or, copy and paste this temporary login code:
+        </Text>
+        <code style={code}>{loginCode}</code>
+        <Text
+          style={{
+            ...text,
+            color: "#ababab",
+            marginTop: "14px",
+            marginBottom: "16px",
+          }}
+        >
+          If you didn&apos;t try to login, you can safely ignore this email.
+        </Text>
+        <Text
+          style={{
+            ...text,
+            color: "#ababab",
+            marginTop: "12px",
+            marginBottom: "38px",
+          }}
+        >
+          Hint: You can set a permanent password in Settings & members → My
+          account.
+        </Text>
+        <Img
+          src={`${baseUrl}/static/notion-logo.png`}
+          width="32"
+          height="32"
+          alt="Notion's Logo"
+        />
+        <Text style={footer}>
+          <Link
+            href="https://notion.so"
+            target="_blank"
+            style={{ ...link, color: "#898989" }}
+          >
+            Notion.so
+          </Link>
+          , the all-in-one-workspace
+          <br />
+          for your notes, tasks, wikis, and databases.
+        </Text>
+      </Container>
+    </Body>
+  </Html>
+);
+
+NotionMagicLinkEmail.PreviewProps = {
+  loginCode: "sparo-ndigo-amurt-secan",
+} as NotionMagicLinkEmailProps;
+
+export default NotionMagicLinkEmail;
+
+const main = {
+  backgroundColor: "#ffffff",
+};
+
+const container = {
+  paddingLeft: "12px",
+  paddingRight: "12px",
+  margin: "0 auto",
+};
+
+const h1 = {
+  color: "#333",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "24px",
+  fontWeight: "bold",
+  margin: "40px 0",
+  padding: "0",
+};
+
+const link = {
+  color: "#2754C5",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "14px",
+  textDecoration: "underline",
+};
+
+const text = {
+  color: "#333",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "14px",
+  margin: "24px 0",
+};
+
+const footer = {
+  color: "#898989",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+  fontSize: "12px",
+  lineHeight: "22px",
+  marginTop: "12px",
+  marginBottom: "24px",
+};
+
+const code = {
+  display: "inline-block",
+  padding: "16px 4.5%",
+  width: "90.5%",
+  backgroundColor: "#f4f4f4",
+  borderRadius: "5px",
+  border: "1px solid #eee",
+  color: "#333",
+};
+
+
+// react-email-starter\emails\plaid-verify-identity.tsx
+import {
+  Body,
+  Container,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Link,
+  Section,
+  Text,
+} from "@react-email/components";
+import * as React from "react";
+
+interface PlaidVerifyIdentityEmailProps {
+  validationCode?: string;
+}
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
+
+export const PlaidVerifyIdentityEmail = ({
+  validationCode,
+}: PlaidVerifyIdentityEmailProps) => (
+  <Html>
+    <Head />
+    <Body style={main}>
+      <Container style={container}>
+        <Img
+          src={`${baseUrl}/static/plaid-logo.png`}
+          width="212"
+          height="88"
+          alt="Plaid"
+          style={logo}
+        />
+        <Text style={tertiary}>Verify Your Identity</Text>
+        <Heading style={secondary}>
+          Enter the following code to finish linking Venmo.
+        </Heading>
+        <Section style={codeContainer}>
+          <Text style={code}>{validationCode}</Text>
+        </Section>
+        <Text style={paragraph}>Not expecting this email?</Text>
+        <Text style={paragraph}>
+          Contact{" "}
+          <Link href="mailto:login@plaid.com" style={link}>
+            login@plaid.com
+          </Link>{" "}
+          if you did not request this code.
+        </Text>
+      </Container>
+      <Text style={footer}>Securely powered by Plaid.</Text>
+    </Body>
+  </Html>
+);
+
+PlaidVerifyIdentityEmail.PreviewProps = {
+  validationCode: "144833",
+} as PlaidVerifyIdentityEmailProps;
+
+export default PlaidVerifyIdentityEmail;
+
+const main = {
+  backgroundColor: "#ffffff",
+  fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
+};
+
+const container = {
+  backgroundColor: "#ffffff",
+  border: "1px solid #eee",
+  borderRadius: "5px",
+  boxShadow: "0 5px 10px rgba(20,50,70,.2)",
+  marginTop: "20px",
+  maxWidth: "360px",
+  margin: "0 auto",
+  padding: "68px 0 130px",
+};
+
+const logo = {
+  margin: "0 auto",
+};
+
+const tertiary = {
+  color: "#0a85ea",
+  fontSize: "11px",
+  fontWeight: 700,
+  fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
+  height: "16px",
+  letterSpacing: "0",
+  lineHeight: "16px",
+  margin: "16px 8px 8px 8px",
+  textTransform: "uppercase" as const,
+  textAlign: "center" as const,
+};
+
+const secondary = {
+  color: "#000",
+  display: "inline-block",
+  fontFamily: "HelveticaNeue-Medium,Helvetica,Arial,sans-serif",
+  fontSize: "20px",
+  fontWeight: 500,
+  lineHeight: "24px",
+  marginBottom: "0",
+  marginTop: "0",
+  textAlign: "center" as const,
+};
+
+const codeContainer = {
+  background: "rgba(0,0,0,.05)",
+  borderRadius: "4px",
+  margin: "16px auto 14px",
+  verticalAlign: "middle",
+  width: "280px",
+};
+
+const code = {
+  color: "#000",
+  display: "inline-block",
+  fontFamily: "HelveticaNeue-Bold",
+  fontSize: "32px",
+  fontWeight: 700,
+  letterSpacing: "6px",
+  lineHeight: "40px",
+  paddingBottom: "8px",
+  paddingTop: "8px",
+  margin: "0 auto",
+  width: "100%",
+  textAlign: "center" as const,
+};
+
+const paragraph = {
+  color: "#444",
+  fontSize: "15px",
+  fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
+  letterSpacing: "0",
+  lineHeight: "23px",
+  padding: "0 40px",
+  margin: "0",
+  textAlign: "center" as const,
+};
+
+const link = {
+  color: "#444",
+  textDecoration: "underline",
+};
+
+const footer = {
+  color: "#000",
+  fontSize: "12px",
+  fontWeight: 800,
+  letterSpacing: "0",
+  lineHeight: "23px",
+  margin: "0",
+  marginTop: "20px",
+  fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
+  textAlign: "center" as const,
+  textTransform: "uppercase" as const,
+};
+
+
+// react-email-starter\emails\stripe-welcome.tsx
+import {
+  Body,
+  Button,
+  Container,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Section,
+  Text,
+} from "@react-email/components";
+import * as React from "react";
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
+
+export const StripeWelcomeEmail = () => (
+  <Html>
+    <Head />
+    <Preview>You're now ready to make live transactions with Stripe!</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Section style={box}>
+          <Img
+            src={`${baseUrl}/static/stripe-logo.png`}
+            width="49"
+            height="21"
+            alt="Stripe"
+          />
+          <Hr style={hr} />
+          <Text style={paragraph}>
+            Thanks for submitting your account information. You're now ready to
+            make live transactions with Stripe!
+          </Text>
+          <Text style={paragraph}>
+            You can view your payments and a variety of other information about
+            your account right from your dashboard.
+          </Text>
+          <Button style={button} href="https://dashboard.stripe.com/login">
+            View your Stripe Dashboard
+          </Button>
+          <Hr style={hr} />
+          <Text style={paragraph}>
+            If you haven't finished your integration, you might find our{" "}
+            <Link style={anchor} href="https://stripe.com/docs">
+              docs
+            </Link>{" "}
+            handy.
+          </Text>
+          <Text style={paragraph}>
+            Once you're ready to start accepting payments, you'll just need to
+            use your live{" "}
+            <Link
+              style={anchor}
+              href="https://dashboard.stripe.com/login?redirect=%2Fapikeys"
+            >
+              API keys
+            </Link>{" "}
+            instead of your test API keys. Your account can simultaneously be
+            used for both test and live requests, so you can continue testing
+            while accepting live payments. Check out our{" "}
+            <Link style={anchor} href="https://stripe.com/docs/dashboard">
+              tutorial about account basics
+            </Link>
+            .
+          </Text>
+          <Text style={paragraph}>
+            Finally, we've put together a{" "}
+            <Link
+              style={anchor}
+              href="https://stripe.com/docs/checklist/website"
+            >
+              quick checklist
+            </Link>{" "}
+            to ensure your website conforms to card network standards.
+          </Text>
+          <Text style={paragraph}>
+            We'll be here to help you with any step along the way. You can find
+            answers to most questions and get in touch with us on our{" "}
+            <Link style={anchor} href="https://support.stripe.com/">
+              support site
+            </Link>
+            .
+          </Text>
+          <Text style={paragraph}>— The Stripe team</Text>
+          <Hr style={hr} />
+          <Text style={footer}>
+            Stripe, 354 Oyster Point Blvd, South San Francisco, CA 94080
+          </Text>
+        </Section>
+      </Container>
+    </Body>
+  </Html>
+);
+
+export default StripeWelcomeEmail;
+
+const main = {
+  backgroundColor: "#f6f9fc",
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
+};
+
+const container = {
+  backgroundColor: "#ffffff",
+  margin: "0 auto",
+  padding: "20px 0 48px",
+  marginBottom: "64px",
+};
+
+const box = {
+  padding: "0 48px",
+};
+
+const hr = {
+  borderColor: "#e6ebf1",
+  margin: "20px 0",
+};
+
+const paragraph = {
+  color: "#525f7f",
+
+  fontSize: "16px",
+  lineHeight: "24px",
+  textAlign: "left" as const,
+};
+
+const anchor = {
+  color: "#556cd6",
+};
+
+const button = {
+  backgroundColor: "#656ee8",
+  borderRadius: "5px",
+  color: "#fff",
+  fontSize: "16px",
+  fontWeight: "bold",
+  textDecoration: "none",
+  textAlign: "center" as const,
+  display: "block",
+  width: "100%",
+  padding: "10px",
+};
+
+const footer = {
+  color: "#8898aa",
+  fontSize: "12px",
+  lineHeight: "16px",
+};
+
+
+// react-email-starter\emails\vercel-invite-user.tsx
+import {
+  Body,
+  Button,
+  Container,
+  Column,
+  Head,
+  Heading,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Text,
+} from "@react-email/components";
+import { Tailwind } from "@react-email/tailwind";
+import * as React from "react";
+
+interface VercelInviteUserEmailProps {
+  username?: string;
+  userImage?: string;
+  invitedByUsername?: string;
+  invitedByEmail?: string;
+  teamName?: string;
+  teamImage?: string;
+  inviteLink?: string;
+  inviteFromIp?: string;
+  inviteFromLocation?: string;
+}
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "";
+
+export const VercelInviteUserEmail = ({
+  username,
+  userImage,
+  invitedByUsername,
+  invitedByEmail,
+  teamName,
+  teamImage,
+  inviteLink,
+  inviteFromIp,
+  inviteFromLocation,
+}: VercelInviteUserEmailProps) => {
+  const previewText = `Join ${invitedByUsername} on Vercel`;
+
+  return (
+    <Html>
+      <Head />
+      <Preview>{previewText}</Preview>
+      <Tailwind>
+        <Body className="bg-white my-auto mx-auto font-sans px-2">
+          <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
+            <Section className="mt-[32px]">
+              <Img
+                src={`${baseUrl}/static/vercel-logo.png`}
+                width="40"
+                height="37"
+                alt="Vercel"
+                className="my-0 mx-auto"
+              />
+            </Section>
+            <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
+              Join <strong>{teamName}</strong> on <strong>Vercel</strong>
+            </Heading>
+            <Text className="text-black text-[14px] leading-[24px]">
+              Hello {username},
+            </Text>
+            <Text className="text-black text-[14px] leading-[24px]">
+              <strong>{invitedByUsername}</strong> (
+              <Link
+                href={`mailto:${invitedByEmail}`}
+                className="text-blue-600 no-underline"
+              >
+                {invitedByEmail}
+              </Link>
+              ) has invited you to the <strong>{teamName}</strong> team on{" "}
+              <strong>Vercel</strong>.
+            </Text>
+            <Section>
+              <Row>
+                <Column align="right">
+                  <Img
+                    className="rounded-full"
+                    src={userImage}
+                    width="64"
+                    height="64"
+                  />
+                </Column>
+                <Column align="center">
+                  <Img
+                    src={`${baseUrl}/static/vercel-arrow.png`}
+                    width="12"
+                    height="9"
+                    alt="invited you to"
+                  />
+                </Column>
+                <Column align="left">
+                  <Img
+                    className="rounded-full"
+                    src={teamImage}
+                    width="64"
+                    height="64"
+                  />
+                </Column>
+              </Row>
+            </Section>
+            <Section className="text-center mt-[32px] mb-[32px]">
+              <Button
+                className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center px-5 py-3"
+                href={inviteLink}
+              >
+                Join the team
+              </Button>
+            </Section>
+            <Text className="text-black text-[14px] leading-[24px]">
+              or copy and paste this URL into your browser:{" "}
+              <Link href={inviteLink} className="text-blue-600 no-underline">
+                {inviteLink}
+              </Link>
+            </Text>
+            <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
+            <Text className="text-[#666666] text-[12px] leading-[24px]">
+              This invitation was intended for{" "}
+              <span className="text-black">{username}</span>. This invite was
+              sent from <span className="text-black">{inviteFromIp}</span>{" "}
+              located in{" "}
+              <span className="text-black">{inviteFromLocation}</span>. If you
+              were not expecting this invitation, you can ignore this email. If
+              you are concerned about your account's safety, please reply to
+              this email to get in touch with us.
+            </Text>
+          </Container>
+        </Body>
+      </Tailwind>
+    </Html>
+  );
+};
+
+VercelInviteUserEmail.PreviewProps = {
+  username: "alanturing",
+  userImage: `${baseUrl}/static/vercel-user.png`,
+  invitedByUsername: "Alan",
+  invitedByEmail: "alan.turing@example.com",
+  teamName: "Enigma",
+  teamImage: `${baseUrl}/static/vercel-team.png`,
+  inviteLink: "https://vercel.com/teams/invite/foo",
+  inviteFromIp: "204.13.186.218",
+  inviteFromLocation: "São Paulo, Brazil",
+} as VercelInviteUserEmailProps;
+
+export default VercelInviteUserEmail;
+
+
+// src\payload-types.ts
+/* tslint:disable */
+/* eslint-disable */
+/**
+ * This file was automatically generated by Payload.
+ * DO NOT MODIFY IT BY HAND. Instead, modify your source Payload config,
+ * and re-run `payload generate:types` to regenerate this file.
+ */
+
+export interface Config {
+  collections: {
+    users: User;
+    experiences: Experience;
+    projects: Project;
+    skills: Skill;
+    media: Media;
+    pages: Page;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
+  };
+  globals: {};
+  locale: null;
+  user: User & {
+    collection: 'users';
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: number;
+  title: string;
+  location?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  icon?: number | Media | null;
+  date?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  text?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  image?: number | Media | null;
+  href?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences".
+ */
+export interface PayloadPreference {
+  id: number;
+  user: {
+    relationTo: 'users';
+    value: number | User;
+  };
+  key?: string | null;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations".
+ */
+export interface PayloadMigration {
+  id: number;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
+}
+
+// src\payload.config.ts
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import path from 'path'
+import { buildConfig } from 'payload'
+import { fileURLToPath } from 'url'
+import sharp from 'sharp'
+import { s3Storage } from '@payloadcms/storage-s3' // New S3 storage package
+
+import { Users } from './collections/Users'
+import { Media } from './collections/Media'
+import { Documents } from './collections/Documents'
+
+import Seeder from './scripts/seeder' // Import the seeder
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+
+const S3_ACCESS_KEY = process.env.S3_ACCESS_KEY || ''
+const S3_SECRET_KEY = process.env.S3_SECRET_KEY || ''
+const S3_REGION = process.env.S3_REGION || ''
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME || ''
+const S3_ENDPOINT = process.env.S3_ENDPOINT || ''
+
+export default buildConfig({
+  editor: lexicalEditor(),
+  collections: [
+    {
+      slug: 'users',
+      admin: {
+        useAsTitle: 'email',
+      },
+      auth: true,
+      access: {
+        delete: () => false,
+        update: () => false,
+      },
+      fields: [],
+    },
+    {
+      slug: 'experiences',
+      fields: [
+        { name: 'title', type: 'text', required: true },
+        { name: 'location', type: 'text' },
+        { name: 'description', type: 'richText' },
+        { name: 'icon', type: 'upload', relationTo: 'media' },
+        { name: 'date', type: 'text' },
+      ],
+    },
+    {
+      slug: 'projects',
+      fields: [
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'richText' },
+        { name: 'tags', type: 'array', label: 'Tags', fields: [{ name: 'tag', type: 'text' }] },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+        { name: 'href', type: 'text', label: 'Website Link' },
+      ],
+    },
+    {
+      slug: 'skills',
+      fields: [{ name: 'name', type: 'text', required: true, unique: true }],
+    },
+    {
+      slug: 'media',
+      upload: true,
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+        },
+      ],
+    },
+    {
+      slug: 'pages',
+      admin: {
+        useAsTitle: 'title',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'content',
+          type: 'richText',
+        },
+      ],
+    },
+  ],
+  secret: process.env.PAYLOAD_SECRET || '',
+  typescript: {
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI || '',
+    },
+  }),
+  sharp,
+  plugins: [
+    s3Storage({
+      collections: {
+        media: true, // Enable S3 storage for the media collection
+      },
+      bucket: S3_BUCKET_NAME,
+      config: {
+        credentials: {
+          accessKeyId: S3_ACCESS_KEY,
+          secretAccessKey: S3_SECRET_KEY,
+        },
+        region: S3_REGION,
+        endpoint: S3_ENDPOINT,
+        forcePathStyle: true, // Ensure the endpoint is used as is
+        // Other S3 configurations...
+      },
+    }),
+  ],
+  async onInit(payload) {
+    const existingUsers = await payload.find({
+      collection: 'users',
+      limit: 1,
+    })
+
+    if (existingUsers.docs.length === 0) {
+      await payload.create({
+        collection: 'users',
+        data: {
+          email: 'dev@payloadcms.com',
+          password: 'test',
+        },
+      })
+    }
+
+    if (process.env.PAYLOAD_SEED === 'true') {
+      await Seeder(payload) // Run seeder if PAYLOAD_SEED is set
+    }
+  },
+})
+
+
+// src\actions\sendEmail.ts
+'use server'
+
+import React from 'react'
+import { Resend } from 'resend'
+import { validateString, getErrorMessage } from '@/lib/utils'
+import ContactFormEmail from '@/email/contact-form-email'
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+export const sendEmail = async (formData: FormData) => {
+  const senderEmail = formData.get('senderEmail')
+  const message = formData.get('message')
+
+  // simple server-side validation
+  if (!validateString(senderEmail, 500)) {
+    return {
+      error: 'Invalid sender email',
+    }
+  }
+  if (!validateString(message, 5000)) {
+    return {
+      error: 'Invalid message',
+    }
+  }
+  let data
+  try {
+    data = await resend.emails.send({
+      from: 'Contact Form <onboarding@resend.dev>',
+      to: process.env.EMAIL_ADDRESS_FROM ?? '',
+      subject: 'Message from contact form',
+      reply_to: senderEmail,
+      react: React.createElement(ContactFormEmail, {
+        message: message,
+        senderEmail: senderEmail,
+      }),
+    })
+  } catch (error: unknown) {
+    return {
+      error: getErrorMessage(error),
+    }
+  }
+
+  return {
+    data,
+  }
+}
+
+
+// src\app\(app)\globals.scss
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+ 
+    --primary: 24 9.8% 10%;
+    --primary-foreground: 60 9.1% 97.8%;
+ 
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+ 
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+ 
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+ 
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+ 
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+ 
+    --primary: 60 9.1% 97.8%;
+    --primary-foreground: 24 9.8% 10%;
+ 
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+ 
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+ 
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+ 
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 5.7% 82.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+
+body {
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-block: 80px;
+  border-inline-width: 1px;
+  border-inline-style: solid;
+  border-image: linear-gradient(180deg, #ffffff00, #ffffff00, #ffffff1a, #ffffff00) 1;
+
+  @media screen and (max-width: 600px) {
+    padding-block: 20px;
+  }
+}
+
+article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 80px;
+
+  @media screen and (max-width: 600px) {
+    padding: 40px 40px;
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2.6px;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.02rem;
+  margin: 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 0;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+  transition: color 0.2s ease-out;
+
+  &:hover {
+    color: #ffffff80;
+  }
+}
+
+.codeBlock {
+  position: relative;
+  background-color: #00000066;
+  margin: 0;
+  padding: 0;
+
+  pre {
+    margin: 0;
+    padding: 60px 80px;
+    overflow-x: auto;
+
+    @media screen and (max-width: 600px) {
+      padding: 40px 40px;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 50vw);
+      width: 100vw;
+      height: 1px;
+      background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
+      z-index: 1;
+    }
+
+    &::after {
+      content: url('/crosshair.svg');
+      display: block;
+      height: 19px;
+      width: 19px;
+      position: absolute;
+      top: -9px;
+      left: -10px;
+    }
+  }
+
+  code {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
+    z-index: 1;
+  }
+
+  &::after {
+    content: url('/crosshair.svg');
+    display: block;
+    height: 19px;
+    width: 19px;
+    position: absolute;
+    bottom: -9px;
+    right: -10px;
+  }
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  div.blur {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/blur.png');
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    background-blend-mode: soft-light, normal;
+    -webkit-backdrop-filter: blur(60px);
+    backdrop-filter: blur(60px);
+  }
+
+  div.gradient {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/gradient.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+  }
+
+
+}
+.project-card {
+  margin-bottom: .5rem; /* Adjust this value as needed */
+}
+
+
+
+
+
+
+// src\app\(app)\layout.tsx
+import React from 'react'
+import { Outfit } from 'next/font/google'
+import './globals.scss'
+
+import ActiveSectionContextProvider from '@/context/active-section-context'
+import Header from './_components/header'
+
+import ThemeSwitch from './_components/theme-switch'
+import ThemeContextProvider from '@/context/theme-context'
+import { Toaster } from 'react-hot-toast'
+
+const font = Outfit({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Kenneth Courtney | Personal Portfolio',
+  description: 'Ken is a full-stack developer with 15 years of experience.',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className="!scroll-smooth">
+      <body
+        className={`${font.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
+      >
+        <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
+        <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+
+        <ThemeContextProvider>
+          <ActiveSectionContextProvider>
+            <Header />
+            {children}
+
+            <Toaster position="top-right" />
+            <ThemeSwitch />
+          </ActiveSectionContextProvider>
+        </ThemeContextProvider>
+      </body>
+    </html>
+  )
+}
+
+
+// src\app\(app)\page.tsx
+import About from './_components/about'
+import Contact from './_components/contact'
+import Intro from './_components/intro'
+
+import Projects from './_components/projects'
+import SectionDivider from './_components/section-divider'
+import Skills from './_components/skills'
+import ProjectsServer from './_components/_projects/ProjectsServer'
+import SkillsServer from './_components/_skills/SkillsServer'
+import ExperiencesServer from './_components/_experiences/ExperiencesServer'
+import Footer from './_components/footer'
+
+export default function Home() {
+  return (
+    <main className="flex flex-col items-center px-4">
+      <Intro />
+      <About />
+      <ProjectsServer />
+
+      <SkillsServer />
+      <ExperiencesServer />
+      {/*<Contact /> */}
+      <Footer />
+    </main>
+  )
+}
+
+
+// src\app\(app)\_components\about.tsx
+'use client'
+
+import React from 'react'
+import SectionHeading from './section-heading'
+import { motion } from 'framer-motion'
+import { useSectionInView } from '@/lib/hooks'
+
+export default function About() {
+  const { ref } = useSectionInView('About')
+
+  return (
+    <motion.section
+      ref={ref}
+      className="mb-12 max-w-[45rem] text-center leading-8 sm:mb-15 scroll-mt-28"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.175 }}
+      id="about"
+    >
+      <SectionHeading>About me</SectionHeading>
+      <div className="inline-block w-full text-justify">
+        <p className="mb-3">
+          As a seasoned full stack developer and .NET expert with over 20 years of experience, I
+          bring a rich blend of technical acumen and innovative thinking to the forefront of
+          technology development. My journey spans designing, developing, and delivering complex
+          business solutions, with a specialized focus on integrating cutting-edge AI technologies.
+        </p>
+        <p>
+          I am proficient in a diverse array of JavaScript frameworks, including NextJS, Vue 3,
+          React, jQuery, AJAX, and Angular, and have deep expertise in .NET frameworks such as
+          ASP.NET, VB.NET, C#, WPF, Web API, and Azure. My technical portfolio also extends to the
+          DNN (DotNetNuke) platform, where I have built custom modules and enhancements,
+          demonstrating my prowess in this domain.
+        </p>
+        <p>
+          My skills in generative AI technologies set me apart in the industry. I excel in writing
+          personalized Chat GPT clients and agents, fine-tuning OpenAI and other open-source LLMs.
+          My proficiency in using vector encodings for document search and crafting custom
+          generative AI solutions is a testament to my ability to stay ahead in the tech curve.
+        </p>
+        <p>
+          With a strong background in database development, including Mongo, Atlas, Supabase,
+          Firebase, SQL Server, T-SQL, and SQL Reporting, I bring a comprehensive skill set to the
+          table. My experience in SOA and integration technologies, encompassing XML, Web Services,
+          and BizTalk, further complements my technical expertise.
+        </p>
+        <p>
+          I am eager to leverage my extensive technical expertise, leadership skills, and innovative
+          approach in a hands-on technology leadership role. I am excited to explore opportunities
+          where I can drive innovation and deliver exceptional results for your organization.
+          Let&apos;s connect and discuss how I can contribute to your team.
+        </p>
+      </div>
+
+      {false && <div className="inline-block w-full text-justify">Vapi Bot Here</div>}
+    </motion.section>
+  )
+}
+
+
+// src\app\(app)\_components\contact.tsx
+'use client'
+
+import React from 'react'
+import SectionHeading from './section-heading'
+import { motion } from 'framer-motion'
+import { useSectionInView } from '@/lib/hooks'
+import { sendEmail } from '@/actions/sendEmail'
+import SubmitBtn from './submit-btn'
+import { toast } from 'react-hot-toast'
+import { useEffect, useState } from 'react'
+
+export default function Contact() {
+  const { ref } = useSectionInView('Contact')
+
+  const [encodedEmail, setEncodedEmail] = useState('')
+
+  useEffect(() => {
+    const email = 'kenneth.courtney@gmail.com'
+    const encoded = Array.from(email)
+      .map((char) => `&#${char.charCodeAt(0)};`)
+      .join('')
+    setEncodedEmail(encoded)
+  }, [])
+
+  return (
+    <motion.section
+      id="contact"
+      ref={ref}
+      className="mb-20 sm:mb-12 w-[min(100%,38rem)] text-center"
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1,
+      }}
+      viewport={{
+        once: true,
+      }}
+    >
+      <SectionHeading>Contact me</SectionHeading>
+
+      <p className="text-gray-700 -mt-6 dark:text-white/80">
+        Please contact me directly at{' '}
+        <a
+          className="underline"
+          href={`mailto:${encodedEmail}`}
+          dangerouslySetInnerHTML={{ __html: encodedEmail }}
+        ></a>{' '}
+        or through this form.
+      </p>
+
+      <form
+        className="mt-10 flex flex-col dark:text-black"
+        action={async (formData) => {
+          const { data, error } = await sendEmail(formData)
+
+          if (error) {
+            toast.error(error)
+            return
+          }
+
+          toast.success('Email sent successfully!')
+        }}
+      >
+        <input
+          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          name="senderEmail"
+          type="email"
+          required
+          maxLength={500}
+          placeholder="Your email"
+        />
+        <textarea
+          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          name="message"
+          placeholder="Your message"
+          required
+          maxLength={5000}
+        />
+        <SubmitBtn />
+      </form>
+    </motion.section>
+  )
+}
+
+
+// src\app\(app)\_components\experience.tsx
+'use client'
+
+import React from 'react'
+import ExperiencesServer from './_experiences/ExperiencesServer'
+
+export default function Experiences() {
+  return (
+    <>
+      <ExperiencesServer />
+    </>
+  )
+}
+
+
+// src\app\(app)\_components\footer.tsx
+import React from 'react'
+
+export default function Footer() {
+  return (
+    <footer className="px-4 mb-10 text-center text-gray-500">
+      <small className="block mb-2 text-xs">&copy; 2030 Ken. All rights reserved.</small>
+      <p className="text-xs">
+        <span className="font-semibold">About this website:</span> built with React & Next.js (App
+        Router & Server Actions), TypeScript, Tailwind CSS, Framer Motion, React Email & Resend,
+        Vercel hosting.
+      </p>
+    </footer>
+  )
+}
+
+
+// src\app\(app)\_components\header.tsx
+'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import { links } from '@/lib/data'
+import Link from 'next/link'
+import clsx from 'clsx'
+import { useActiveSectionContext } from '@/context/active-section-context'
+
+export default function Header() {
+  const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
+
+  return (
+    <header className="z-[999] relative">
+      <motion.div
+        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+        initial={{ y: -100, x: '-50%', opacity: 0 }}
+        animate={{ y: 0, x: '-50%', opacity: 1 }}
+      ></motion.div>
+
+      <nav className="flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
+        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
+          {links.map((link) => (
+            <motion.li
+              className="relative flex items-center justify-center h-3/4"
+              key={link.hash}
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            >
+              <Link
+                href={link.hash}
+                className={clsx(
+                  'flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300',
+                  {
+                    'text-gray-950 dark:text-gray-200': activeSection === link.name,
+                  },
+                )}
+                onClick={() => {
+                  setActiveSection(link.name)
+                  setTimeOfLastClick(Date.now())
+                }}
+              >
+                {link.name}
+
+                {link.name === activeSection && (
+                  <motion.span
+                    className="absolute inset-0 bg-gray-100 rounded-full -z-10 dark:bg-gray-800"
+                    layoutId="activeSection"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  ></motion.span>
+                )}
+              </Link>
+            </motion.li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  )
+}
+
+
+// src\app\(app)\_components\Hero.jsx
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import React from 'react'
+
+function Hero() {
+  return (
+    <section>
+  <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+      <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
+        <Image
+          alt=""
+          src="/doctors.jpg"
+          width={800}
+          height={800}
+          className="absolute inset-0 h-full
+          rounded-3xl 
+          w-full object-cover"
+        />
+      </div>
+
+      <div className="lg:py-24">
+        <h2 className="text-4xl font-bold sm:text-4xl">
+            Find & Book 
+            <span className='text-primary'> Appointment </span> 
+            with your Fav 
+            <span className='text-primary '> Doctors</span></h2>
+
+        <p className="mt-4 text-gray-500">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut qui hic atque tenetur quis
+          eius quos ea neque sunt, accusantium soluta minus veniam tempora deserunt? Molestiae eius
+          quidem quam repellat.
+        </p>
+
+        <Button className="mt-10">Explore Now</Button>
+      </div>
+    </div>
+  </div>
+</section>
+  )
+}
+
+export default Hero
+
+// src\app\(app)\_components\intro.tsx
+// ./src/app/(app)/_components/intro.tsx
+'use client'
+
+import Image from 'next/image'
+import React from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { BsArrowRight, BsLinkedin } from 'react-icons/bs'
+import { HiDownload } from 'react-icons/hi'
+import { FaGithubSquare } from 'react-icons/fa'
+import { useSectionInView } from '@/lib/hooks'
+import { useActiveSectionContext } from '@/context/active-section-context'
+
+export default function Intro() {
+  const { ref } = useSectionInView('Home', 0.5)
+  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
+
+  return (
+    <section
+      ref={ref}
+      id="home"
+      className="mb-12 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+    >
+      <div className="flex items-center justify-center">
+        <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: 'tween',
+              duration: 0.2,
+            }}
+          >
+            <Image
+              src="/images/ken.png"
+              alt="Ken portrait"
+              width="512"
+              height="512"
+              quality="95"
+              priority={true}
+              className="h-512 w-512 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
+            />
+          </motion.div>
+
+          <motion.span
+            className="absolute bottom-0 right-0 text-4xl"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: 'spring',
+              stiffness: 125,
+              delay: 0.1,
+              duration: 0.7,
+            }}
+          >
+            👋
+          </motion.span>
+        </div>
+      </div>
+
+      <motion.h1
+        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <span className="font-bold">Hello, I&apos;m Ken.</span> I&apos;m a{' '}
+        <span className="font-bold">full-stack developer</span> with{' '}
+        <span className="font-bold">15 years</span> of experience. I enjoy building{' '}
+        <span className="italic">sites &amp; apps</span>. My focus is{' '}
+        <span className="underline">React (Next.js)</span>.
+      </motion.h1>
+
+      <motion.div
+        className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium sm:flex-row"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.1,
+        }}
+      >
+        <Link
+          href="#contact"
+          className="flex items-center gap-2 py-3 text-white transition bg-gray-900 rounded-full outline-none group px-7 focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105"
+          onClick={() => {
+            setActiveSection('Contact')
+            setTimeOfLastClick(Date.now())
+          }}
+        >
+          Contact me here{' '}
+          <BsArrowRight className="transition opacity-70 group-hover:translate-x-1" />
+        </Link>
+
+        <a
+          className="flex items-center gap-2 py-3 transition bg-white rounded-full outline-none cursor-pointer group px-7 focus:scale-110 hover:scale-110 active:scale-105 borderBlack dark:bg-white/10"
+          href="/CV.pdf"
+          download
+          title="Download CV"
+        >
+          Download CV <HiDownload className="transition opacity-60 group-hover:translate-y-1" />
+        </a>
+
+        <a
+          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+          href="https://www.linkedin.com/in/kendevco/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn"
+        >
+          <BsLinkedin />
+        </a>
+
+        <a
+          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+          href="https://github.com/kendevco"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
+        >
+          <FaGithubSquare />
+        </a>
+      </motion.div>
+    </section>
+  )
+}
+
+
+// src\app\(app)\_components\Payload.jsx
+import { Badge } from '@/components/Badge'
+import { Background } from '@/components/Background'
+import Link from 'next/link'
+import React from 'react'
+
+export const PayloadInfo = () => {
+  return (
+    <>
+      <main>
+        <article>
+          <Badge />
+          <h1>Payload 3.0</h1>
+          <p>
+            This BETA is rapidly evolving, you can report any bugs against{' '}
+            <Link href="https://github.com/payloadcms/payload-3.0-demo/issues" target="_blank">
+              the repo
+            </Link>{' '}
+            or in the{' '}
+            <Link
+              href="https://discord.com/channels/967097582721572934/1215659716538273832"
+              target="_blank"
+            >
+              dedicated channel in Discord
+            </Link>
+            . Payload is running at <Link href="/admin">/admin</Link>. An example of a custom route
+            running the Local API can be found at <Link href="/my-route">/my-route</Link>.
+          </p>
+          <p>You can use the Local API in your server components like this:</p>
+        </article>
+        <div className="codeBlock">
+          <pre>
+            <code>
+              {`import { getPayload } from 'payload'
+                import configPromise from '@payload-config'
+                const payload = await getPayload({ config: configPromise })
+
+                const data = await payload.find({
+                  collection: 'posts',
+                })
+
+                return <Posts data={data} />
+                `}
+            </code>
+          </pre>
+        </div>
+      </main>
+      <Background />
+    </>
+  )
+}
+
+// src\app\(app)\_components\projects.tsx
+// src/app/(app)/_components/projects.tsx
+import ProjectsServer from './_projects/ProjectsServer'
+
+export default function Projects() {
+  return (
+    <div>
+      <ProjectsServer />
+    </div>
+  )
+}
+
+
+// src\app\(app)\_components\section-divider.tsx
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+
+export default function SectionDivider() {
+  return (
+    <motion.div
+      className="bg-gray-200 my-24 h-16 w-1 rounded-full hidden sm:block dark:bg-opacity-20"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.125 }}
+    ></motion.div>
+  );
+}
+
+
+// src\app\(app)\_components\section-heading.tsx
+import React from "react";
+
+type SectionHeadingProps = {
+  children: React.ReactNode;
+};
+
+export default function SectionHeading({ children }: SectionHeadingProps) {
+  return (
+    <h2 className="text-3xl font-medium capitalize mb-8 text-center">
+      {children}
+    </h2>
+  );
+}
+
+
+// src\app\(app)\_components\skills.tsx
+"use client";
+
+import React from "react";
+import SectionHeading from "./section-heading";
+import { skillsData } from "@/lib/data";
+import { useSectionInView } from "@/lib/hooks";
+import { motion } from "framer-motion";
+
+const fadeInAnimationVariants = {
+  initial: {
+    opacity: 0,
+    y: 100,
+  },
+  animate: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.05 * index,
+    },
+  }),
+};
+
+export default function Skills() {
+  const { ref } = useSectionInView("Skills");
+
+  return (
+    <section
+      id="skills"
+      ref={ref}
+      className="mb-12 max-w-[53rem] scroll-mt-28 text-center sm:mb-15"
+    >
+      <SectionHeading>My skills</SectionHeading>
+      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
+        {skillsData.map((skill, index) => (
+          <motion.li
+            className="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80"
+            key={index}
+            variants={fadeInAnimationVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{
+              once: true,
+            }}
+            custom={index}
+          >
+            {skill}
+          </motion.li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+
+// src\app\(app)\_components\submit-btn.tsx
+import React from 'react'
+import { FaPaperPlane } from 'react-icons/fa'
+import { useFormStatus } from 'react-dom'
+
+export default function SubmitBtn() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type="submit"
+      className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none transition-all focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 dark:bg-white dark:bg-opacity-10 disabled:scale-100 disabled:bg-opacity-65"
+      disabled={pending}
+    >
+      {pending ? (
+        <div className="w-5 h-5 border-b-2 border-white rounded-full animate-spin"></div>
+      ) : (
+        <>
+          Submit{' '}
+          <FaPaperPlane className="text-xs transition-all opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1" />{' '}
+        </>
+      )}
+    </button>
+  )
+}
+
+
+// src\app\(app)\_components\theme-switch.tsx
+'use client'
+import { useTheme } from '@/context/theme-context'
+import React, { useState } from 'react'
+import { BsMoon, BsSun } from 'react-icons/bs'
+import { FaArrowUp, FaUser, FaUserAlt } from 'react-icons/fa'
+
+export default function ThemeSwitch() {
+  const { theme, toggleTheme } = useTheme()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const signIn = async () => {
+    // Replace with your actual login endpoint and credentials
+    const response = null
+
+    if (response) {
+      setIsLoggedIn(true)
+    }
+  }
+
+  const signOut = async () => {
+    // Replace with your actual logout endpoint
+    const response = null
+
+    if (response) {
+      setIsLoggedIn(false)
+    }
+  }
+
+  const handleExtractData = async () => {
+    try {
+      const response = await fetch('/api/extract-data')
+      const result = await response.json()
+      if (response.ok) {
+        console.log(result.message)
+      } else {
+        console.error(result.error)
+      }
+    } catch (error) {
+      console.error('Error extracting data:', error)
+    }
+  }
+
+  return (
+    <>
+      <div className="fixed flex gap-4 bottom-5 right-5">
+        <button
+          title="Toggle theme"
+          className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+          onClick={toggleTheme}
+        >
+          {theme === 'light' ? <BsSun /> : <BsMoon />}
+        </button>
+
+        <button
+          title="Scroll to top"
+          className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+          onClick={scrollToTop}
+        >
+          <FaArrowUp />
+        </button>
+
+        <button
+          title="Extract Data"
+          onClick={handleExtractData}
+          className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+        >
+          <FaUser />
+        </button>
+
+        {isLoggedIn ? (
+          <button
+            title="Sign out"
+            onClick={signOut}
+            className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+          >
+            <FaUserAlt />
+          </button>
+        ) : (
+          <button
+            title="Sign in"
+            onClick={signIn}
+            className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+          >
+            <FaUser />
+          </button>
+        )}
+      </div>
+    </>
+  )
+}
+
+
+// src\app\(app)\_components\_experiences\ExperiencesClient.tsx
+// src/ExperiencesClient.tsx
+'use client'
+
+import React from 'react'
+import SectionHeading from '../section-heading'
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
+import 'react-vertical-timeline-component/style.min.css'
+import { useSectionInView } from '@/lib/hooks'
+import { useTheme } from '@/context/theme-context'
+import Image from 'next/image'
+import { Experience } from '../../../../../payload-types'
+
+export default function ExperiencesClient({ experiences }: { experiences: Experience[] }) {
+  const { ref } = useSectionInView('Experience')
+  const { theme } = useTheme()
+
+  const getBackground = (isLightTheme: boolean): string => {
+    return isLightTheme ? '#f3f4f6' : 'rgba(255, 255, 255, 0.05)'
+  }
+
+  const lineColor = theme === 'light' ? '#e5e7eb' : 'rgba(229, 231, 235, 0.2)'
+
+  const isValidUrl = (url: string): boolean => {
+    try {
+      new URL(url)
+      return true
+    } catch (_) {
+      return false
+    }
+  }
+
+  return (
+    <section id="experience" ref={ref} className="scroll-mt-28 mb-12 sm:mb-15">
+      <SectionHeading>My experience</SectionHeading>
+      <VerticalTimeline lineColor={lineColor}>
+        {experiences.map((item, index) => {
+          let descriptionText = ''
+          if (item.description && item.description.root && item.description.root.children) {
+            descriptionText = item.description.root.children
+              .map((paragraph: any) =>
+                paragraph.children.map((line: { text: string }) => line.text).join(' '),
+              )
+              .join(' ')
+          }
+
+          return (
+            <VerticalTimelineElement
+              key={index}
+              className="vertical-timeline-element--work"
+              contentStyle={{
+                background: getBackground(theme === 'light'),
+                boxShadow: 'none',
+                border: `1px solid ${
+                  theme === 'light' ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.5)'
+                }`,
+                textAlign: 'left',
+                padding: '1.3rem 2rem',
+              }}
+              contentArrowStyle={{
+                borderRight: `7px solid ${
+                  theme === 'light' ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.5)'
+                }`,
+              }}
+              date={item.date || 'Unknown Date'} // Ensure date is a string
+              icon={
+                typeof item.icon === 'object' && item.icon && 'url' in item.icon ? (
+                  <Image
+                    src={item.icon.url as string}
+                    alt={item.title || 'Experience Icon'}
+                    className="rounded-full"
+                    width={40}
+                    height={40}
+                  />
+                ) : (
+                  <Image
+                    src={
+                      typeof item.icon === 'string' && isValidUrl(item.icon)
+                        ? item.icon
+                        : 'https://via.placeholder.com/40'
+                    }
+                    alt={item.title || 'Experience Icon'}
+                    className="rounded-full"
+                    width={40}
+                    height={40}
+                  />
+                )
+              }
+              visible={true}
+            >
+              <h3 className="vertical-timeline-element-title">{item.title}</h3>
+              <h4 className="vertical-timeline-element-subtitle">{item.location}</h4>
+              <p>{descriptionText}</p>
+            </VerticalTimelineElement>
+          )
+        })}
+      </VerticalTimeline>
+    </section>
+  )
+}
+
+
+// src\app\(app)\_components\_experiences\ExperiencesServer.tsx
+// src/app/(app)/_components/_experiences/ExperiencesServer.tsx
+import React from 'react'
+import config from '../../../../payload.config'
+import ExperiencesClient from './ExperiencesClient'
+import { Experience } from '../../../../payload-types'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+
+export default async function ExperiencesServer() {
+  // Initialize payload
+  const payload = await getPayloadHMR({ config })
+
+  // Fetch experiences
+  const experiences = await payload.find({ collection: 'experiences' })
+
+  // Format experiences
+  const formattedExperiences: Experience[] = experiences.docs.map((experience) => {
+    return {
+      id: experience.id,
+      title: experience.title,
+      location: experience.location || undefined, // Ensure 'location' is of type 'string | undefined'
+      date: experience.date,
+      description: experience.description,
+      icon: experience.icon,
+      createdAt: experience.createdAt,
+      updatedAt: experience.updatedAt,
+    } as Experience
+  })
+
+  // Render ExperiencesClient component with the fetched data
+  return <ExperiencesClient experiences={formattedExperiences} />
+}
+
+
+// src\app\(app)\_components\_projects\project.tsx
+// src/app/(app)/_components/_projects/project.tsx
+'use client'
+
+import { useRef } from 'react'
+import Image from 'next/image'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card'
+import { Project } from '../../../../../payload-types'
+
+interface ProjectProps extends Project {}
+
+export default function ProjectCard({
+  title,
+  description,
+  tags,
+  image,
+  href,
+  updatedAt,
+  createdAt,
+}: ProjectProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['0 1', '1.33 1'],
+  })
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
+
+  // Extract description text
+  const descriptionText =
+    description?.root.children
+      .map((paragraph) => {
+        if (Array.isArray(paragraph.children)) {
+          return paragraph.children.map((line: { text: string }) => line.text).join(' ')
+        }
+        return ''
+      })
+      .join(' ') || ''
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        scale: scaleProgress,
+        opacity: opacityProgress,
+      }}
+      className="mb-8 group sm:mb-12 last:mb-0"
+    >
+      <CardContainer containerClassName="w-full h-full grid grid-cols-1" className="h-full">
+        <CardBody className="h-full">
+          <CardItem translateZ={60} className="relative w-full h-64">
+            {typeof image === 'object' && image && 'url' in image && (
+              <Image
+                src={image.url as string}
+                alt={image.text ?? ''}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-t-lg shadow-2xl"
+              />
+            )}
+          </CardItem>
+          <CardItem className="flex flex-col w-full h-full px-5 pt-4 pb-7">
+            <h3 className="text-2xl font-semibold">{title}</h3>
+            <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
+              {descriptionText}
+            </p>
+            <ul className="flex flex-wrap gap-2 mt-4">
+              {tags?.map((tag) => (
+                <li
+                  className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
+                  key={tag?.id ?? tag.tag} // Ensure each tag has a unique key
+                >
+                  {tag?.tag}
+                </li>
+              ))}
+            </ul>
+            {href && (
+              <a
+                href={href}
+                className="px-4 py-2 mt-4 text-white transition bg-blue-500 rounded-md hover:bg-blue-600"
+              >
+                Visit Website
+              </a>
+            )}
+          </CardItem>
+        </CardBody>
+      </CardContainer>
+    </motion.div>
+  )
+}
+
+
+// src\app\(app)\_components\_projects\ProjectsClient.tsx
+// src/app/(app)/_components/ProjectsClient.tsx
+'use client'
+
+import React from 'react'
+import { useSectionInView } from '@/lib/hooks'
+import SectionHeading from '../section-heading'
+import ProjectComponent from './project'
+
+import { Project } from '../../../../../payload-types'
+
+export default function ProjectsClient({ projects }: { projects: Project[] }) {
+  const { ref } = useSectionInView('Projects', 0.5)
+
+  return (
+    <section ref={ref} id="projects" className="scroll-mt-28 mb-12">
+      <SectionHeading>My projects</SectionHeading>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {' '}
+        {/* Adjust gap as needed */}
+        {projects.map((project) => (
+          <React.Fragment key={project.id}>
+            <ProjectComponent
+              id={project.id}
+              title={project.title}
+              description={
+                project.description ?? {
+                  root: {
+                    type: '',
+                    children: [],
+                    direction: 'ltr',
+                    format: '',
+                    indent: 0,
+                    version: 0,
+                  },
+                }
+              }
+              tags={project.tags ?? []}
+              image={project.image ?? ''}
+              href={project.href ?? ''}
+              updatedAt={project.updatedAt}
+              createdAt={project.createdAt}
+            />
+          </React.Fragment>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+
+// src\app\(app)\_components\_projects\ProjectsServer.tsx
+// src/app/(app)/_components/ProjectsServer.tsx
+import React from 'react'
+import config from '../../../../payload.config'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Project } from '../../../../payload-types'
+import ProjectsClient from './ProjectsClient'
+
+export default async function ProjectsServer() {
+  // Initialize payload
+  const payload = await getPayloadHMR({ config })
+
+  // Fetch projects with pagination
+  const limit = 100 // Set a reasonable limit for the number of documents to fetch per page
+  let projects: Project[] = []
+  let page = 1
+
+  while (true) {
+    const result = await payload.find({
+      collection: 'projects',
+      limit,
+      page,
+    })
+
+    // Add the fetched documents to the projects array
+    projects = [...projects, ...result.docs]
+    page += 1
+
+    // Break the loop if the number of documents returned is less than the limit
+    if (result.docs.length < limit) {
+      break
+    }
+
+    // Safeguard: break the loop if we have fetched a very large number of documents
+    if (page * limit > 10000) {
+      console.warn(
+        'Fetched more than 10,000 documents, breaking the loop to avoid potential infinite loop.',
+      )
+      break
+    }
+  }
+
+  // Render ProjectsClient component with the fetched data
+  return <ProjectsClient projects={projects} />
+}
+
+
+// src\app\(app)\_components\_skills\index.tsx
+// src/app/(app)/_components/_skills/index.tsx
+import React from 'react'
+import SkillsServer from './SkillsServer'
+
+export default function Skills() {
+  return (
+    <div>
+      <SkillsServer />
+    </div>
+  )
+}
+
+
+// src\app\(app)\_components\_skills\SkillsClient.tsx
+// src/app/(app)/_components/_skills/SkillsClient.tsx
+'use client'
+
+import React from 'react'
+import SectionHeading from '../section-heading'
+import { motion } from 'framer-motion'
+import { useSectionInView } from '@/lib/hooks'
+
+type Skill = {
+  id: string
+  name: string
+}
+
+const fadeInAnimationVariants = {
+  initial: { opacity: 0, y: 100 },
+  animate: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.05 * index },
+  }),
+}
+
+export default function SkillsClient({ skills }: { skills: Skill[] }) {
+  const { ref } = useSectionInView('Skills')
+
+  return (
+    <section
+      id="skills"
+      ref={ref}
+      className="mb-12 max-w-[53rem] scroll-mt-28 text-center sm:mb-15"
+    >
+      <SectionHeading>My skills</SectionHeading>
+      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
+        {skills.map((skill, index) => (
+          <motion.li
+            className="px-5 py-3 bg-white borderBlack rounded-xl dark:bg-white/10 dark:text-white/80"
+            key={index}
+            variants={fadeInAnimationVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={index}
+          >
+            {skill.name}
+          </motion.li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+
+// src\app\(app)\_components\_skills\SkillsServer.tsx
+// src/app/(app)/_components/_skills/SkillsServer.tsx
+import React from 'react'
+import config from '../../../../payload.config'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Skill } from '../../../../payload-types'
+import SkillsClient from './SkillsClient'
+
+export default async function SkillsServer() {
+  // Initialize payload
+  const payload = await getPayloadHMR({ config })
+
+  // Fetch skills with pagination
+  const limit = 100 // Set a reasonable limit for the number of documents to fetch per page
+  let skills: Skill[] = []
+  let page = 1
+
+  while (true) {
+    const result = await payload.find({
+      collection: 'skills',
+      limit,
+      page,
+    })
+
+    // Add the fetched documents to the skills array
+    skills = [...skills, ...result.docs]
+
+    // Break the loop if the number of documents returned is less than the limit
+    if (result.docs.length < limit) {
+      break
+    }
+
+    // Increment the page number
+    page += 1
+
+    // Safeguard: break the loop if we have fetched a very large number of documents
+    if (skills.length > 10000) {
+      console.warn(
+        'Fetched more than 10,000 documents, breaking the loop to avoid potential infinite loop.',
+      )
+      break
+    }
+  }
+
+  // Render SkillsClient component with the fetched data
+  return <SkillsClient skills={skills} />
+}
+
+
+// src\app\my-route\route.ts
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+
+export const GET = async () => {
+  const payload = await getPayload({
+    config: configPromise,
+  })
+
+  const data = await payload.find({
+    collection: 'users',
+  })
+
+  return Response.json(data)
+}
+
+
+// src\collections\Documents.ts
+export const Documents = {
+  slug: 'documents',
+  fields: [
+    {
+      name: 'name',
+      type:'text',
+      label: 'Name',
+      required: true
+    }
+  ]
+}
+
+// src\collections\Media.ts
+import type { CollectionConfig } from 'payload'
+
+export const Media: CollectionConfig = {
+  slug: 'media',
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'alt',
+      type: 'text',
+      required: true,
+    },
+  ],
+  upload: true,
+}
+
+
+// src\collections\Users.ts
+import type { CollectionConfig } from 'payload'
+
+export const Users: CollectionConfig = {
+  slug: 'users',
+  admin: {
+    useAsTitle: 'email',
+  },
+  auth: true,
+  fields: [
+    // Email added by default
+    // Add more fields as needed
+  ],
+}
+
+
+// src\components\Background.tsx
+export const Background = () => {
+  return (
+    <div className="background">
+      <div className="blur" />
+      <div className="gradient" />
+    </div>
+  )
+}
+
+
+// src\components\Badge.tsx
+export const Badge = () => {
+  return (
+    <span className="badge">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.35899 1.59033L16.956 6.233V15.0452L11.2355 18.4097V9.59751L3.62941 4.96095L9.35899 1.59033Z"
+          fill="#ffffff"
+        />
+        <path d="M8.77667 17.9211V11.0447L3.04407 14.4153L8.77667 17.9211Z" fill="#ffffff" />
+      </svg>
+      Beta
+    </span>
+  )
+}
+
+
+// src\components\Example.tsx
+import React from 'react'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import configPromise from '@payload-config'
+
+const Example: React.FC = async () => {
+  const payload = await getPayloadHMR({ config: configPromise })
+  const url = payload.getAdminURL()
+  return <div>The admin panel is running at: {url}</div>
+}
+
+export default Example
+
+
+// src\components\ui\3d-card.tsx
+'use client'
+
+import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import React, { createContext, useState, useContext, useRef, useEffect, useCallback } from 'react'
+
+const MouseEnterContext = createContext<
+  [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
+>(undefined)
+
+export const CardContainer = ({
+  children,
+  className,
+  containerClassName,
+}: {
+  children?: React.ReactNode
+  className?: string
+  containerClassName?: string
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isMouseEntered, setIsMouseEntered] = useState(false)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect()
+    const x = (e.clientX - left - width / 2) / 25
+    const y = (e.clientY - top - height / 2) / 25
+    containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`
+  }
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsMouseEntered(true)
+    if (!containerRef.current) return
+  }
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return
+    setIsMouseEntered(false)
+    containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`
+  }
+
+  return (
+    <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
+      <div
+        className={cn('py-20 flex items-center justify-center', containerClassName)}
+        style={{
+          perspective: '1000px',
+        }}
+      >
+        <div
+          ref={containerRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className={cn(
+            'flex items-center justify-center relative transition-all duration-200 ease-linear',
+            className,
+          )}
+          style={{
+            transformStyle: 'preserve-3d',
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </MouseEnterContext.Provider>
+  )
+}
+
+export const CardBody = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) => {
+  return (
+    <div
+      className={cn(
+        'h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
+export const CardItem = ({
+  as: Tag = 'div',
+  children,
+  className,
+  translateX = 0,
+  translateY = 0,
+  translateZ = 0,
+  rotateX = 0,
+  rotateY = 0,
+  rotateZ = 0,
+  ...rest
+}: {
+  as?: React.ElementType
+  children: React.ReactNode
+  className?: string
+  translateX?: number | string
+  translateY?: number | string
+  translateZ?: number | string
+  rotateX?: number | string
+  rotateY?: number | string
+  rotateZ?: number | string
+  [key: string]: any
+}) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isMouseEntered] = useMouseEnter()
+
+  const handleAnimations = useCallback(() => {
+    if (!ref.current) return
+    if (isMouseEntered) {
+      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`
+    } else {
+      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`
+    }
+  }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ])
+
+  useEffect(() => {
+    handleAnimations()
+  }, [handleAnimations])
+
+  return (
+    <Tag ref={ref} className={cn('w-fit transition duration-200 ease-linear', className)} {...rest}>
+      {children}
+    </Tag>
+  )
+}
+
+// Create a hook to use the context
+export const useMouseEnter = () => {
+  const context = useContext(MouseEnterContext)
+  if (context === undefined) {
+    throw new Error('useMouseEnter must be used within a MouseEnterProvider')
+  }
+  return context
+}
+
+
+// src\components\ui\button.tsx
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+
+
+// src\context\active-section-context.tsx
+"use client";
+
+import type { SectionName } from "@/lib/types";
+import React, { useState, createContext, useContext } from "react";
+
+type ActiveSectionContextProviderProps = {
+  children: React.ReactNode;
+};
+
+type ActiveSectionContextType = {
+  activeSection: SectionName;
+  setActiveSection: React.Dispatch<React.SetStateAction<SectionName>>;
+  timeOfLastClick: number;
+  setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export const ActiveSectionContext =
+  createContext<ActiveSectionContextType | null>(null);
+
+export default function ActiveSectionContextProvider({
+  children,
+}: ActiveSectionContextProviderProps) {
+  const [activeSection, setActiveSection] = useState<SectionName>("Home");
+  const [timeOfLastClick, setTimeOfLastClick] = useState(0); // we need to keep track of this to disable the observer temporarily when user clicks on a link
+
+  return (
+    <ActiveSectionContext.Provider
+      value={{
+        activeSection,
+        setActiveSection,
+        timeOfLastClick,
+        setTimeOfLastClick,
+      }}
+    >
+      {children}
+    </ActiveSectionContext.Provider>
+  );
+}
+
+export function useActiveSectionContext() {
+  const context = useContext(ActiveSectionContext);
+
+  if (context === null) {
+    throw new Error(
+      "useActiveSectionContext must be used within an ActiveSectionContextProvider"
+    );
+  }
+
+  return context;
+}
+
+
+// src\context\theme-context.tsx
+"use client";
+
+import React, { useEffect, useState, createContext, useContext } from "react";
+
+type Theme = "light" | "dark";
+
+type ThemeContextProviderProps = {
+  children: React.ReactNode;
+};
+
+type ThemeContextType = {
+  theme: Theme;
+  toggleTheme: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextType | null>(null);
+
+export default function ThemeContextProvider({
+  children,
+}: ThemeContextProviderProps) {
+  const [theme, setTheme] = useState<Theme>("dark");
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+      window.localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
+    } else {
+      setTheme("light");
+      window.localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("theme") as Theme | null;
+
+    if (localTheme) {
+      setTheme(localTheme);
+
+      if (localTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext);
+
+  if (context === null) {
+    throw new Error("useTheme must be used within a ThemeContextProvider");
+  }
+
+  return context;
+}
+
+
+// src\email\contact-form-email.tsx
+import React from 'react'
+import {
+  Html,
+  Body,
+  Head,
+  Heading,
+  Hr,
+  Container,
+  Preview,
+  Section,
+  Text,
+} from '@react-email/components'
+import { Tailwind } from '@react-email/tailwind'
+
+type ContactFormEmailProps = {
+  message: string
+  senderEmail: string
+}
+
+export default function ContactFormEmail({ message, senderEmail }: ContactFormEmailProps) {
+  return (
+    <Html>
+      <Head />
+      <Preview>New message from your portfolio site</Preview>
+      <Tailwind>
+        <Body className="text-black bg-gray-100">
+          <Container>
+            <Section className="px-10 py-4 my-10 bg-white rounded-md borderBlack">
+              <Heading className="leading-tight">
+                You received the following message from the contact form
+              </Heading>
+              <Text>{message}</Text>
+              <Hr />
+              <Text>The sender&apos;s email is: {senderEmail}</Text>
+            </Section>
+          </Container>
+        </Body>
+      </Tailwind>
+    </Html>
+  )
+}
+
+
+// src\lib\data.ts
+import React from 'react'
+import { FaAnchor, FaDatabase, FaDotCircle, FaReact } from 'react-icons/fa'
+
+export const links = [
+  {
+    name: 'Home',
+    hash: '#home',
+  },
+  {
+    name: 'About',
+    hash: '#about',
+  },
+  {
+    name: 'Projects',
+    hash: '#projects',
+  },
+  {
+    name: 'Skills',
+    hash: '#skills',
+  },
+  {
+    name: 'Experience',
+    hash: '#experience',
+  },
+  {
+    name: 'Contact',
+    hash: '#contact',
+  },
+] as const
+
+export const experiencesData = [
+  {
+    title: 'DNN Subject Matter Expert',
+    location: 'Remote',
+    description:
+      'Led technical management and maintenance for 35 standalone DNN websites hosting 50+ custom healthcare web apps, demanding expertise in DNN/MVC frameworks. Orchestrated upgrade of 20 sites from DNN 8 to 9, migrating to Windows Server 2019. Demonstrated leadership in complex migrations.',
+    icon: React.createElement(FaReact),
+    date: 'Mar 2021 - Present',
+  },
+  {
+    title: 'Independent Developer',
+    location: 'Tampa, FL',
+    description:
+      'Supported and maintained custom DNN modules including document management system, gallery module, store module developed for Advantage International and rebranded to KenDev.Co.',
+    icon: React.createElement(FaDotCircle),
+    date: 'May 2015 - Apr 2021',
+  },
+  {
+    title: 'Senior .NET Consultant',
+    location: 'Tampa, FL',
+    description:
+      'Integrated two separate DNN websites operating on different versions, upgraded both sites to latest version 4.9.2. Upgraded commercial Portal Store module. Combined 10,000+ user accounts from sites into new consolidated site.',
+    icon: React.createElement(FaDatabase),
+    date: 'Feb 2009 - May 2015',
+  },
+  {
+    title: 'DotNetNuke Architect',
+    location: 'Tampa, FL',
+    description:
+      'Architected social networking site on DNN and .NET 3.5 for tracking favorite sports teams and fantasy leagues. Developed custom DNN modules for forums, messaging, surveys, analytics. Integrated sports stats feed.',
+    icon: React.createElement(FaDatabase),
+    date: 'Sep 2008 - Nov 2008',
+  },
+  {
+    title: 'Internal Systems Architect',
+    location: 'Tampa, FL',
+    description:
+      'Enhanced LOB ERP system used by 500+ sales reps to add order return capabilities, streamlining process. Led major CRM integration project to create 360 customer view across 10 core business systems.',
+    icon: React.createElement(FaDatabase),
+    date: 'Jun 2006 - Oct 2008',
+  },
+
+  {
+    title: 'Senior .NET Developer',
+    location: 'Tampa, FL',
+    description:
+      "Developed 'pluggable' WinForms apps using .NET for project management system. Created Windows Services framework for batch processing and message queueing. Published work on Mainframe report processing tool.",
+    icon: React.createElement(FaDatabase),
+    date: 'Feb 2006 - Jun 2006',
+  },
+  {
+    title: 'Senior .NET Developer',
+    location: 'Tampa, FL',
+    description:
+      'Developed SOA integrations using ASP.NET Web Services and XML transformations on proprietary middleware platform.',
+    icon: React.createElement(FaDatabase),
+    date: 'Nov 2005 - Feb 2006',
+  },
+  {
+    title: 'Senior .NET Developer',
+    location: 'Tampa, FL',
+    description:
+      'Developed and maintained N-Tier OLTP student information system managing 100,000+ students. Technical lead for student administration system. Integrated with SAP accounting system.',
+    icon: React.createElement(FaDatabase),
+    date: 'Jan 2004 - Nov 2005',
+  },
+  {
+    title: 'Mortgage Software Engineer',
+    location: 'Tampa, FL',
+    description:
+      'Member of team focused on N-Tier enterprise mortgage underwriting analysis app. Provided analysis to transform business rules into coded solutions. Authored technical documentation.',
+    icon: React.createElement(FaDatabase),
+    date: 'Mar 2001 - Jan 2003',
+  },
+  {
+    title: 'Software Developer',
+    location: 'St Petersburg, FL',
+    description:
+      'Designed and developed solutions utilizing VB, ASP, COM+, SQL Server. Integrated ecommerce sites with payment systems. Implemented order fulfillment, inventory management, and data synchronization.',
+    icon: React.createElement(FaDatabase),
+    date: 'Jan 2000 - Jan 2001',
+  },
+  {
+    title: "Navy Machinist's Mate",
+    location: 'United States',
+    description:
+      'Operated, maintained, and tested components on nuclear submarine. Qualified for all watchstations of Naval Nuclear Propulsion Plant. Assisted in submarine decommissioning.',
+    icon: React.createElement(FaAnchor),
+    date: 'Jan 1991 - Oct 1994',
+  },
+]
+
+export const projectsData = [
+  {
+    title: 'Discordant',
+    description:
+      'Full featured Discord clone with 1-1 voice and video calling, Clerk authentication, Upload Thing file repository, and more.',
+    tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
+    imageUrl: 'discordantImg',
+    href: 'https://discordant.kendev.co/',
+  },
+
+  {
+    title: 'Next LMS',
+    description:
+      'Next LMS is a powerful and flexible learning management system with user management, dark mode, error handling for video upload, and a variety of other features by Code with Antonio.',
+    tags: ['React', 'Next.js', 'MongoDB', 'Tailwind', 'Prisma'],
+    imageUrl: 'discordantImg',
+    href: 'https://lms.kendev.co',
+  },
+  {
+    title: 'Notion Clone',
+    description:
+      'A personal clone of Notion, plus enhancements for personal use by Code with Antonio.',
+    tags: ['React', 'Next.js', 'Mongo', 'Tailwind', 'Prisma'],
+    imageUrl: 'discordantImg',
+    href: 'https://notes.kendev.co/',
+  },
+  {
+    title: 'Next Commerce',
+    description:
+      'A fullstack commerce solution with separate admin dashboard by Code with Antonio.',
+    tags: ['React', 'Next.js', 'Mongo', 'Tailwind', 'Prisma'],
+    imageUrl: 'discordantImg',
+    href: 'https://next-commerce-store.kendev.co/',
+  },
+] as const
+
+export const skillsData = [
+  // Web Development
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'React.js',
+  'Node.js',
+  'Next.js',
+  'Vue.js',
+  'Web Design',
+  'Responsive Web Design',
+  'Cascading Style Sheets (CSS)',
+
+  // Backend Development
+  'ASP.NET',
+  'ASP.NET MVC',
+  'Python',
+  'Django',
+  'SQL',
+  'PL/SQL',
+  'Prisma',
+  'App.Write',
+  'GraphQL',
+  'PostgreSQL',
+  'MongoDB',
+  'Databases',
+  'ADO.NET',
+
+  // DevOps
+  'Git',
+  'Windows Server',
+  'Windows Server Administration',
+  'Internet Information Services (IIS)',
+  'Microsoft SQL Server',
+
+  // .NET Framework
+  'C#',
+  '.NET Framework',
+  'Microsoft Visual Studio.NET',
+  'Visual Studio Code',
+  'Visual Basic',
+  'DotNetNuke (DNN)',
+
+  // Project Management
+  'Scrum',
+  'Microsoft Project',
+  'Visio',
+  'Documentation',
+
+  // Debugging and Performance
+  'Debugging',
+  'Dynatrace',
+
+  // UI/UX
+  'Framer Motion',
+  'Tailwind',
+  'Redux',
+
+  // Version Control
+  'Microsoft Visual Source Safe',
+] as const
+
+
+// src\lib\hooks.ts
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import type { SectionName } from "./types";
+
+export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
+  const { ref, inView } = useInView({
+    threshold,
+  });
+  const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
+
+  useEffect(() => {
+    if (inView && Date.now() - timeOfLastClick > 1000) {
+      setActiveSection(sectionName);
+    }
+  }, [inView, setActiveSection, timeOfLastClick, sectionName]);
+
+  return {
+    ref,
+  };
+}
+
+
+// src\lib\types.ts
+import { links } from "./data";
+
+export type SectionName = (typeof links)[number]["name"];
+
+
+// src\lib\utils.ts
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+export function formatTimeDelta(seconds: number) {
+  const hours = Math.floor(seconds / 3600)
+  const minutes = Math.floor((seconds - hours * 3600) / 60)
+  const secs = Math.floor(seconds - hours * 3600 - minutes * 60)
+  const parts = []
+  if (hours > 0) {
+    parts.push(`${hours}h`)
+  }
+  if (minutes > 0) {
+    parts.push(`${minutes}m`)
+  }
+  if (secs > 0) {
+    parts.push(`${secs}s`)
+  }
+  return parts.join(' ')
+}
+
+export const validateString = (value: unknown, maxLength: number): value is string => {
+  if (!value || typeof value !== 'string' || value.length > maxLength) {
+    return false
+  }
+
+  return true
+}
+
+export const getErrorMessage = (error: unknown): string => {
+  let message: string
+
+  if (error instanceof Error) {
+    message = error.message
+  } else if (error && typeof error === 'object' && 'message' in error) {
+    message = String(error.message)
+  } else if (typeof error === 'string') {
+    message = error
+  } else {
+    message = 'Something went wrong'
+  }
+
+  return message
+}
+
+
+// src\scripts\extractData.ts
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import configPromise from '@payload-config'
+import fs from 'fs'
+
+const collections = ['users', 'experiences', 'projects', 'skills', 'media', 'pages'] as const
+type Collection = (typeof collections)[number]
+
+export const extractData = async () => {
+  const payload = await getPayloadHMR({ config: configPromise })
+
+  const data: Record<Collection, any[]> = {} as Record<Collection, any[]>
+
+  for (const collection of collections) {
+    const result = await payload.find({
+      collection,
+      limit: 1000, // Adjust as necessary
+    })
+    data[collection] = result.docs
+  }
+
+  fs.writeFileSync('seed.ts', `export default ${JSON.stringify(data, null, 2)};`, 'utf-8')
+
+  console.log('Data extraction complete.')
+}
+
+extractData().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
+
+
+// src\scripts\seed.ts
+export default {
+  "users": [
+    {
+      "id": "663fafc1d96c55ea112f7504",
+      "email": "kenneth.courtney@gmail.com",
+      "createdAt": "2024-05-11T17:49:53.634Z",
+      "updatedAt": "2024-05-11T17:49:53.634Z",
+      "loginAttempts": 0
+    },
+    {
+      "id": "663eed0bce935704a700a66f",
+      "email": "dev@payloadcms.com",
+      "createdAt": "2024-05-11T03:59:07.577Z",
+      "updatedAt": "2024-05-23T16:09:25.969Z",
+      "loginAttempts": 0
+    }
+  ],
+  "experiences": [
+    {
+      "id": "663ef647b4bee671d08ea1bc",
+      "title": "Navy Machinist's Mate",
+      "location": "United States",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Operated, maintained, and tested components on nuclear submarine. Qualified for all watchstations of Naval Nuclear Propulsion Plant. Assisted in submarine decommissioning.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "justify",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Jan 1991 - Oct 1994",
+      "createdAt": "2024-05-11T04:38:31.133Z",
+      "updatedAt": "2024-05-21T03:59:17.407Z"
+    },
+    {
+      "id": "663ef647b4bee671d08ea1ba",
+      "title": "Software Developer",
+      "location": "St Petersburg, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Designed and developed solutions utilizing VB, ASP, COM+, SQL Server. Integrated ecommerce sites with payment systems. Implemented order fulfillment, inventory management, and data synchronization.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "justify",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Jan 2000 - Jan 2001",
+      "createdAt": "2024-05-11T04:38:31.045Z",
+      "updatedAt": "2024-05-21T03:59:20.178Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1b8",
+      "title": "Mortgage Software Engineer",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Member of team focused on N-Tier enterprise mortgage underwriting analysis app. Provided analysis to transform business rules into coded solutions. Authored technical documentation.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Mar 2001 - Jan 2003",
+      "createdAt": "2024-05-11T04:38:30.956Z",
+      "updatedAt": "2024-05-21T03:59:21.517Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1b6",
+      "title": "Senior .NET Developer",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Developed and maintained N-Tier OLTP student information system managing 100,000+ students. Technical lead for student administration system. Integrated with SAP accounting system.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Jan 2004 - Nov 2005",
+      "createdAt": "2024-05-11T04:38:30.868Z",
+      "updatedAt": "2024-05-21T03:59:22.812Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1b4",
+      "title": "Senior .NET Developer",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Developed SOA integrations using ASP.NET Web Services and XML transformations on proprietary middleware platform.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Nov 2005 - Feb 2006",
+      "createdAt": "2024-05-11T04:38:30.784Z",
+      "updatedAt": "2024-05-21T03:59:41.450Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1b2",
+      "title": "Senior .NET Developer",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Developed 'pluggable' WinForms apps using .NET for project management system. Created Windows Services framework for batch processing and message queueing. Published work on Mainframe report processing tool.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Feb 2006 - Jun 2006",
+      "createdAt": "2024-05-11T04:38:30.698Z",
+      "updatedAt": "2024-05-21T03:59:51.339Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1b0",
+      "title": "Internal Systems Architect",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Enhanced LOB ERP system used by 500+ sales reps to add order return capabilities, streamlining process. Led major CRM integration project to create 360 customer view across 10 core business systems.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Jun 2006 - Oct 2008",
+      "createdAt": "2024-05-11T04:38:30.612Z",
+      "updatedAt": "2024-05-21T03:59:58.143Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1ae",
+      "title": "DotNetNuke Architect",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Architected social networking site on DNN and .NET 3.5 for tracking favorite sports teams and fantasy leagues. Developed custom DNN modules for forums, messaging, surveys, analytics. Integrated sports stats feed.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Sep 2008 - Nov 2008",
+      "createdAt": "2024-05-11T04:38:30.523Z",
+      "updatedAt": "2024-05-21T03:59:58.292Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1ac",
+      "title": "Senior .NET Consultant",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Integrated two separate DNN websites operating on different versions, upgraded both sites to latest version 4.9.2. Upgraded commercial Portal Store module. Combined 10,000+ user accounts from sites into new consolidated site.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Feb 2009 - May 2015",
+      "createdAt": "2024-05-11T04:38:30.432Z",
+      "updatedAt": "2024-05-21T03:59:58.438Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1aa",
+      "title": "Independent Developer",
+      "location": "Tampa, FL",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Supported and maintained custom DNN modules including document management system, gallery module, store module developed for Advantage International and rebranded to KenDev.Co.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "May 2015 - Apr 2021",
+      "createdAt": "2024-05-11T04:38:30.334Z",
+      "updatedAt": "2024-05-21T03:59:58.579Z"
+    },
+    {
+      "id": "663ef646b4bee671d08ea1a8",
+      "title": "DNN Subject Matter Expert",
+      "location": "St Louis, MO",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Led technical management and maintenance for 35 standalone DNN websites hosting 50+ custom healthcare web apps, demanding expertise in DNN/MVC frameworks. Orchestrated upgrade of 20 sites from DNN 8 to 9, migrating to Windows Server 2019. Demonstrated leadership in complex migrations.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "icon": null,
+      "date": "Mar 2021 - Aug 2024",
+      "createdAt": "2024-05-11T04:38:30.232Z",
+      "updatedAt": "2024-05-21T03:59:58.724Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "664813775fc2d294a8399548",
+      "title": "Taskify - Trello Clone",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Code With Antonio's Taskify Trello Clone is a feature-rich project management tool built with modern web technologies. Utilizing Next.js for a dynamic and responsive user interface, this project leverages Cloudinary for image storage, Prisma for database management, Tailwind CSS for styling, and Clerk for user authentication. Taskify mirrors the functionality of Trello, allowing users to create, manage, and organize tasks seamlessly in a collaborative environment. ",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 2
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "tags": [
+        {
+          "tag": "NextJS",
+          "id": "66481377052df7207c209544"
+        },
+        {
+          "tag": "Cloudinary",
+          "id": "66481377052df7207c209545"
+        },
+        {
+          "tag": "Prisma",
+          "id": "66481377052df7207c209546"
+        },
+        {
+          "tag": "Clerk Auth",
+          "id": "66481377052df7207c209547"
+        },
+        {
+          "tag": "TailwindsCSS",
+          "id": "66481377052df7207c209548"
+        }
+      ],
+      "image": null,
+      "href": "https://taskify.kendev.co/",
+      "createdAt": "2024-05-18T02:33:27.416Z",
+      "updatedAt": "2024-05-21T03:59:59.011Z"
+    },
+    {
+      "id": "6646e1fe16dc3c397a285d01",
+      "title": "Payload Powered Portfolio Site",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 2,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "KenDev's Portfolio is a professional showcase powered by Next.js and PayloadCMS. This site highlights a comprehensive array of projects, skills, and experiences with a focus on full-stack development. Utilizing Next.js for seamless performance and PayloadCMS for robust content management, the portfolio features a dynamic and responsive design enhanced by Tailwind CSS. The integration of MySQL ensures efficient data handling, while React powers the interactive user interface. ",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 2
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "tags": [
+        {
+          "tag": "NextJS",
+          "id": "6646e1fe5e12e2250c73c6d4"
+        },
+        {
+          "tag": "PayloadCMS",
+          "id": "6646e1fe5e12e2250c73c6d5"
+        },
+        {
+          "tag": "MySQL",
+          "id": "6646e1fe5e12e2250c73c6d6"
+        },
+        {
+          "tag": "TAILWIND",
+          "id": "6646e1fe5e12e2250c73c6d7"
+        },
+        {
+          "tag": "REACT",
+          "id": "6646e1fe5e12e2250c73c6d8"
+        },
+        {
+          "tag": "Framer Motion",
+          "id": "664abc1f181f374e401f38d5"
+        },
+        {
+          "tag": "ShadCN ",
+          "id": "664abc26181f374e401f38d6"
+        },
+        {
+          "tag": "Aceternity",
+          "id": "664abc2d181f374e401f38d7"
+        }
+      ],
+      "image": null,
+      "href": "https://folio.kendev.co",
+      "createdAt": "2024-05-17T04:50:06.848Z",
+      "updatedAt": "2024-05-21T03:59:59.153Z"
+    },
+    {
+      "id": "663ef647b4bee671d08ea1c6",
+      "title": "Next Commerce",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "A fullstack commerce solution with separate admin dashboard by Code with Antonio.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "tags": [
+        {
+          "tag": "React",
+          "id": "663ef647357f6956e0cc5b97"
+        },
+        {
+          "tag": "Next.js",
+          "id": "663ef647357f6956e0cc5b98"
+        },
+        {
+          "tag": "Mongo",
+          "id": "663ef647357f6956e0cc5b99"
+        },
+        {
+          "tag": "Tailwind",
+          "id": "663ef647357f6956e0cc5b9a"
+        },
+        {
+          "tag": "Prisma",
+          "id": "663ef647357f6956e0cc5b9b"
+        }
+      ],
+      "href": "https://next-commerce-store.kendev.co/",
+      "createdAt": "2024-05-11T04:38:31.607Z",
+      "updatedAt": "2024-05-21T03:59:59.295Z",
+      "image": null
+    },
+    {
+      "id": "663ef647b4bee671d08ea1c4",
+      "title": "Notion Clone",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "A personal clone of Notion, plus enhancements for personal use by Code with Antonio.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "tags": [
+        {
+          "tag": "React",
+          "id": "663ef647357f6956e0cc5b8d"
+        },
+        {
+          "tag": "Next.js",
+          "id": "663ef647357f6956e0cc5b8e"
+        },
+        {
+          "tag": "Mongo",
+          "id": "663ef647357f6956e0cc5b8f"
+        },
+        {
+          "tag": "Tailwind",
+          "id": "663ef647357f6956e0cc5b90"
+        },
+        {
+          "tag": "Prisma",
+          "id": "663ef647357f6956e0cc5b91"
+        },
+        {
+          "tag": "Convex",
+          "id": "6646d92fc0ddbb86f880ce0b"
+        }
+      ],
+      "href": "https://notes.kendev.co/",
+      "createdAt": "2024-05-11T04:38:31.511Z",
+      "updatedAt": "2024-05-21T03:59:59.444Z",
+      "image": null
+    },
+    {
+      "id": "663ef647b4bee671d08ea1c2",
+      "title": "Next LMS",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Next LMS is a powerful and flexible learning management system with user management, dark mode, error handling for video upload, and a variety of other features by Code with Antonio.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "tags": [
+        {
+          "tag": "React",
+          "id": "663ef647357f6956e0cc5b83"
+        },
+        {
+          "tag": "Next.js",
+          "id": "663ef647357f6956e0cc5b84"
+        },
+        {
+          "tag": "MongoDB",
+          "id": "663ef647357f6956e0cc5b85"
+        },
+        {
+          "tag": "Tailwind",
+          "id": "663ef647357f6956e0cc5b86"
+        },
+        {
+          "tag": "Prisma",
+          "id": "663ef647357f6956e0cc5b87"
+        }
+      ],
+      "href": "https://lms.kendev.co",
+      "createdAt": "2024-05-11T04:38:31.423Z",
+      "updatedAt": "2024-05-21T03:59:59.590Z",
+      "image": null
+    },
+    {
+      "id": "663ef647b4bee671d08ea1c0",
+      "title": "Discordant",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Full featured Discord clone with 1-1 voice and video calling, Clerk authentication, Upload Thing file repository, and more.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "tags": [
+        {
+          "tag": "React",
+          "id": "663ef647357f6956e0cc5b79"
+        },
+        {
+          "tag": "TypeScript",
+          "id": "663ef647357f6956e0cc5b7a"
+        },
+        {
+          "tag": "Next.js",
+          "id": "663ef647357f6956e0cc5b7b"
+        },
+        {
+          "tag": "Tailwind",
+          "id": "663ef647357f6956e0cc5b7c"
+        },
+        {
+          "tag": "Redux",
+          "id": "663ef647357f6956e0cc5b7d"
+        }
+      ],
+      "href": "https://discordant.kendev.co/",
+      "createdAt": "2024-05-11T04:38:31.328Z",
+      "updatedAt": "2024-05-21T03:59:59.727Z",
+      "image": null
+    }
+  ],
+  "skills": [
+    {
+      "id": "664ac1e8a8a2eed8e829990c",
+      "name": "VS Code",
+      "createdAt": "2024-05-20T03:22:16.169Z",
+      "updatedAt": "2024-05-20T03:22:16.169Z"
+    },
+    {
+      "id": "664a8d5e7f9a0b869f34742a",
+      "name": "PayloadCMS",
+      "createdAt": "2024-05-19T23:38:06.880Z",
+      "updatedAt": "2024-05-19T23:38:06.880Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea224",
+      "name": "Microsoft Visual Source Safe",
+      "createdAt": "2024-05-11T04:38:35.793Z",
+      "updatedAt": "2024-05-11T04:38:35.793Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea222",
+      "name": "Redux",
+      "createdAt": "2024-05-11T04:38:35.705Z",
+      "updatedAt": "2024-05-11T04:38:35.705Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea220",
+      "name": "Tailwind",
+      "createdAt": "2024-05-11T04:38:35.614Z",
+      "updatedAt": "2024-05-11T04:38:35.614Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea21e",
+      "name": "Framer Motion",
+      "createdAt": "2024-05-11T04:38:35.529Z",
+      "updatedAt": "2024-05-11T04:38:35.529Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea21c",
+      "name": "Dynatrace",
+      "createdAt": "2024-05-11T04:38:35.438Z",
+      "updatedAt": "2024-05-11T04:38:35.438Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea21a",
+      "name": "Debugging",
+      "createdAt": "2024-05-11T04:38:35.350Z",
+      "updatedAt": "2024-05-11T04:38:35.350Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea218",
+      "name": "Documentation",
+      "createdAt": "2024-05-11T04:38:35.263Z",
+      "updatedAt": "2024-05-11T04:38:35.263Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea216",
+      "name": "Visio",
+      "createdAt": "2024-05-11T04:38:35.171Z",
+      "updatedAt": "2024-05-11T04:38:35.171Z"
+    },
+    {
+      "id": "663ef64bb4bee671d08ea214",
+      "name": "Microsoft Project",
+      "createdAt": "2024-05-11T04:38:35.082Z",
+      "updatedAt": "2024-05-11T04:38:35.082Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea212",
+      "name": "Scrum",
+      "createdAt": "2024-05-11T04:38:34.992Z",
+      "updatedAt": "2024-05-11T04:38:34.992Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea210",
+      "name": "DotNetNuke (DNN)",
+      "createdAt": "2024-05-11T04:38:34.902Z",
+      "updatedAt": "2024-05-11T04:38:34.902Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea20e",
+      "name": "Visual Basic",
+      "createdAt": "2024-05-11T04:38:34.813Z",
+      "updatedAt": "2024-05-11T04:38:34.813Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea20c",
+      "name": "Visual Studio Code",
+      "createdAt": "2024-05-11T04:38:34.723Z",
+      "updatedAt": "2024-05-11T04:38:34.723Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea20a",
+      "name": "Microsoft Visual Studio.NET",
+      "createdAt": "2024-05-11T04:38:34.633Z",
+      "updatedAt": "2024-05-11T04:38:34.633Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea208",
+      "name": ".NET Framework",
+      "createdAt": "2024-05-11T04:38:34.547Z",
+      "updatedAt": "2024-05-11T04:38:34.547Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea206",
+      "name": "C#",
+      "createdAt": "2024-05-11T04:38:34.453Z",
+      "updatedAt": "2024-05-11T04:38:34.453Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea204",
+      "name": "Microsoft SQL Server",
+      "createdAt": "2024-05-11T04:38:34.361Z",
+      "updatedAt": "2024-05-11T04:38:34.361Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea202",
+      "name": "Internet Information Services (IIS)",
+      "createdAt": "2024-05-11T04:38:34.275Z",
+      "updatedAt": "2024-05-11T04:38:34.275Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea200",
+      "name": "Windows Server Administration",
+      "createdAt": "2024-05-11T04:38:34.177Z",
+      "updatedAt": "2024-05-11T04:38:34.177Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea1fe",
+      "name": "Windows Server",
+      "createdAt": "2024-05-11T04:38:34.092Z",
+      "updatedAt": "2024-05-11T04:38:34.092Z"
+    },
+    {
+      "id": "663ef64ab4bee671d08ea1fc",
+      "name": "Git",
+      "createdAt": "2024-05-11T04:38:34.003Z",
+      "updatedAt": "2024-05-11T04:38:34.003Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1fa",
+      "name": "ADO.NET",
+      "createdAt": "2024-05-11T04:38:33.911Z",
+      "updatedAt": "2024-05-11T04:38:33.911Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1f8",
+      "name": "Databases",
+      "createdAt": "2024-05-11T04:38:33.818Z",
+      "updatedAt": "2024-05-11T04:38:33.818Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1f6",
+      "name": "MongoDB",
+      "createdAt": "2024-05-11T04:38:33.736Z",
+      "updatedAt": "2024-05-11T04:38:33.736Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1f4",
+      "name": "PostgreSQL",
+      "createdAt": "2024-05-11T04:38:33.650Z",
+      "updatedAt": "2024-05-11T04:38:33.650Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1f2",
+      "name": "GraphQL",
+      "createdAt": "2024-05-11T04:38:33.562Z",
+      "updatedAt": "2024-05-11T04:38:33.562Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1f0",
+      "name": "App.Write",
+      "createdAt": "2024-05-11T04:38:33.477Z",
+      "updatedAt": "2024-05-11T04:38:33.477Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1ee",
+      "name": "Prisma",
+      "createdAt": "2024-05-11T04:38:33.391Z",
+      "updatedAt": "2024-05-11T04:38:33.391Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1ec",
+      "name": "PL/SQL",
+      "createdAt": "2024-05-11T04:38:33.306Z",
+      "updatedAt": "2024-05-11T04:38:33.306Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1ea",
+      "name": "SQL",
+      "createdAt": "2024-05-11T04:38:33.219Z",
+      "updatedAt": "2024-05-11T04:38:33.219Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1e8",
+      "name": "Django",
+      "createdAt": "2024-05-11T04:38:33.133Z",
+      "updatedAt": "2024-05-11T04:38:33.133Z"
+    },
+    {
+      "id": "663ef649b4bee671d08ea1e6",
+      "name": "Python",
+      "createdAt": "2024-05-11T04:38:33.049Z",
+      "updatedAt": "2024-05-11T04:38:33.049Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1e4",
+      "name": "ASP.NET MVC",
+      "createdAt": "2024-05-11T04:38:32.953Z",
+      "updatedAt": "2024-05-11T04:38:32.953Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1e2",
+      "name": "ASP.NET",
+      "createdAt": "2024-05-11T04:38:32.871Z",
+      "updatedAt": "2024-05-11T04:38:32.871Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1e0",
+      "name": "Cascading Style Sheets (CSS)",
+      "createdAt": "2024-05-11T04:38:32.784Z",
+      "updatedAt": "2024-05-11T04:38:32.784Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1de",
+      "name": "Responsive Web Design",
+      "createdAt": "2024-05-11T04:38:32.697Z",
+      "updatedAt": "2024-05-11T04:38:32.697Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1dc",
+      "name": "Web Design",
+      "createdAt": "2024-05-11T04:38:32.606Z",
+      "updatedAt": "2024-05-11T04:38:32.606Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1da",
+      "name": "Vue.js",
+      "createdAt": "2024-05-11T04:38:32.520Z",
+      "updatedAt": "2024-05-11T04:38:32.520Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1d8",
+      "name": "Next.js",
+      "createdAt": "2024-05-11T04:38:32.432Z",
+      "updatedAt": "2024-05-11T04:38:32.432Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1d6",
+      "name": "Node.js",
+      "createdAt": "2024-05-11T04:38:32.333Z",
+      "updatedAt": "2024-05-11T04:38:32.333Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1d4",
+      "name": "React.js",
+      "createdAt": "2024-05-11T04:38:32.242Z",
+      "updatedAt": "2024-05-11T04:38:32.242Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1d2",
+      "name": "React",
+      "createdAt": "2024-05-11T04:38:32.154Z",
+      "updatedAt": "2024-05-11T04:38:32.154Z"
+    },
+    {
+      "id": "663ef648b4bee671d08ea1d0",
+      "name": "TypeScript",
+      "createdAt": "2024-05-11T04:38:32.065Z",
+      "updatedAt": "2024-05-11T04:38:32.065Z"
+    },
+    {
+      "id": "663ef647b4bee671d08ea1ce",
+      "name": "JavaScript",
+      "createdAt": "2024-05-11T04:38:31.972Z",
+      "updatedAt": "2024-05-11T04:38:31.972Z"
+    },
+    {
+      "id": "663ef647b4bee671d08ea1cc",
+      "name": "CSS",
+      "createdAt": "2024-05-11T04:38:31.881Z",
+      "updatedAt": "2024-05-11T04:38:31.881Z"
+    },
+    {
+      "id": "663ef647b4bee671d08ea1ca",
+      "name": "HTML",
+      "createdAt": "2024-05-11T04:38:31.789Z",
+      "updatedAt": "2024-05-11T04:38:31.789Z"
+    }
+  ],
+  "media": [
+    {
+      "id": "664c1dc099868ea3c6347895",
+      "text": "Taskify",
+      "cloudinary": {},
+      "filename": "Screenshot 2024-05-17 222849-1.png",
+      "mimeType": "image/png",
+      "filesize": 142755,
+      "width": 620,
+      "height": 540,
+      "createdAt": "2024-05-21T04:06:24.585Z",
+      "updatedAt": "2024-05-21T04:06:24.585Z",
+      "url": "/api/media/file/Screenshot 2024-05-17 222849-1.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "664aa5246b584be5adfb4d6d",
+      "text": "Software Development",
+      "filename": "icon_softwaredev.png",
+      "mimeType": "image/png",
+      "filesize": 46286,
+      "width": 222,
+      "height": 206,
+      "createdAt": "2024-05-20T01:19:32.160Z",
+      "updatedAt": "2024-05-20T01:19:32.160Z",
+      "url": "/api/media/file/icon_softwaredev.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "664a958f35db935fc9eed539",
+      "text": "DNN Development",
+      "filename": "icon_dnn.png",
+      "mimeType": "image/png",
+      "filesize": 59836,
+      "width": 198,
+      "height": 195,
+      "createdAt": "2024-05-20T00:13:03.254Z",
+      "updatedAt": "2024-05-20T00:13:03.254Z",
+      "url": "/api/media/file/icon_dnn.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "664a8f507f9a0b869f3474f3",
+      "text": "Go US Navy!",
+      "filename": "icon_navy.png",
+      "mimeType": "image/png",
+      "filesize": 48294,
+      "width": 198,
+      "height": 204,
+      "createdAt": "2024-05-19T23:46:24.871Z",
+      "updatedAt": "2024-05-19T23:46:24.871Z",
+      "url": "/api/media/file/icon_navy.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "664812d15fc2d294a8399509",
+      "filename": "Screenshot 2024-05-17 222849.png",
+      "mimeType": "image/png",
+      "filesize": 142755,
+      "width": 620,
+      "height": 540,
+      "createdAt": "2024-05-18T02:30:41.232Z",
+      "updatedAt": "2024-05-18T02:30:41.232Z",
+      "url": "/api/media/file/Screenshot 2024-05-17 222849.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "6646e1f316dc3c397a285ce9",
+      "text": "KenDev Portfolio",
+      "filename": "Screenshot 2024-05-17 004923.png",
+      "mimeType": "image/png",
+      "filesize": 425861,
+      "width": 1055,
+      "height": 1036,
+      "createdAt": "2024-05-17T04:49:55.866Z",
+      "updatedAt": "2024-05-17T04:49:55.866Z",
+      "url": "/api/media/file/Screenshot 2024-05-17 004923.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "6646d9553469b8ad376332d9",
+      "text": "NextJS Video LMS ",
+      "filename": "nextlms.png",
+      "mimeType": "image/png",
+      "filesize": 535174,
+      "width": 1506,
+      "height": 966,
+      "createdAt": "2024-05-17T04:13:09.259Z",
+      "updatedAt": "2024-05-17T04:13:09.259Z",
+      "url": "/api/media/file/nextlms.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "6646d91f3469b8ad37633252",
+      "text": "A Fullstack Notion Clone",
+      "filename": "jotion.png",
+      "mimeType": "image/png",
+      "filesize": 96857,
+      "width": 720,
+      "height": 932,
+      "createdAt": "2024-05-17T04:12:15.781Z",
+      "updatedAt": "2024-05-17T04:12:15.781Z",
+      "url": "/api/media/file/jotion.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "6646d8f13469b8ad376331e1",
+      "text": "Next Commerce Store Front",
+      "filename": "commerce.png",
+      "mimeType": "image/png",
+      "filesize": 1331292,
+      "width": 1260,
+      "height": 1218,
+      "createdAt": "2024-05-17T04:11:29.527Z",
+      "updatedAt": "2024-05-17T04:11:29.527Z",
+      "url": "/api/media/file/commerce.png",
+      "thumbnailURL": null
+    },
+    {
+      "id": "6646d87b3469b8ad376331bb",
+      "filename": "discordant.png",
+      "mimeType": "image/png",
+      "filesize": 146702,
+      "width": 861,
+      "height": 525,
+      "createdAt": "2024-05-17T04:09:31.926Z",
+      "updatedAt": "2024-05-17T04:09:31.926Z",
+      "url": "/api/media/file/discordant.png",
+      "thumbnailURL": null
+    }
+  ],
+  "pages": [
+    {
+      "id": "66403e3f4a54c1128f9d0ef6",
+      "title": "Getting Started with PayloadCMS",
+      "content": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "I've been on a wild ride of discovery with NextJS. First it was just that it was cool. To be honest, I've been a Microsoft .NET corporate programmer my whole life, but I got into a bit of trouble a while back and while I'd like to set it behind me it has a way of rearing its ugly head. ",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "createdAt": "2024-05-12T03:57:51.329Z",
+      "updatedAt": "2024-05-12T03:57:51.329Z"
+    }
+  ]
+};
+
+// src\scripts\seeder.ts
+import { Payload } from 'payload'
+import seedData from './seed' // Adjust the path if needed
+
+const collections = ['experiences', 'projects', 'skills', 'media', 'pages'] as const
+type Collection = (typeof collections)[number]
+
+const getUniqueField = (collection: string) => {
+  switch (collection) {
+    case 'users':
+      return 'email' // Example unique field for users
+    case 'experiences':
+      return 'title' // Example unique field for experiences
+    case 'projects':
+      return 'title' // Example unique field for projects
+    case 'skills':
+      return 'name' // Example unique field for skills
+    case 'media':
+      return 'text' // Example unique field for media
+    case 'pages':
+      return 'title' // Example unique field for pages
+    default:
+      return 'id' // Default unique field
+  }
+}
+
+export const seedDatabase = async (payload: Payload) => {
+  const data: Record<Collection, any[]> = seedData as Record<Collection, any[]>
+
+  for (const collection of collections) {
+    const documents = data[collection]
+    const uniqueField = getUniqueField(collection)
+
+    for (const document of documents) {
+      const existingDocument = await payload.find({
+        collection,
+        where: {
+          [uniqueField]: {
+            equals: document[uniqueField],
+          },
+        },
+      })
+
+      if (existingDocument.docs.length === 0) {
+        await payload.create({
+          collection,
+          data: document,
+        })
+      } else {
+        console.log(
+          `Document in ${collection} with ${uniqueField} ${document[uniqueField]} already exists. Skipping creation.`,
+        )
+      }
+    }
+  }
+
+  console.log('Database seeded successfully.')
+}
+
+export default seedDatabase
+
+
+// src\scripts\standalone-script.js
+// src\scripts\standalone-script.js
+/**
+ * This is an example of a standalone script that loads in the Payload config
+ * and uses the Payload Local API to query the database.
+ */
+
+import { getPayload } from 'payload'
+import { importConfig } from 'payload/node'
+import 'dotenv/config'
+
+async function run() {
+  const awaitedConfig = await importConfig('../../payload.config.ts')
+  const payload = await getPayload({ config: awaitedConfig })
+
+  const pages = await payload.find({
+    collection: 'pages',
+  })
+
+  console.log(pages)
+  process.exit(0)
+}
+
+run().catch(console.error)
+
+
+// src\scripts\tsconfig.ts-node.json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@payload-config": ["./payload.config.ts"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".next"]
+}
+
+

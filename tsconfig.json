@@ -36,7 +36,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "**/*.js",
+    "**/*.jsx",
+     "utils/extractData.js"
   ],
   "exclude": [
     "node_modules"
