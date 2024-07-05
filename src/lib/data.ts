@@ -4,27 +4,27 @@ import { FaAnchor, FaDatabase, FaDotCircle, FaReact } from 'react-icons/fa'
 export const links = [
   {
     name: 'Home',
-    hash: '#home',
+    hash: '/#home',
   },
   {
     name: 'About',
-    hash: '#about',
+    hash: '/#about',
   },
   {
     name: 'Projects',
-    hash: '#projects',
+    hash: '/#projects',
   },
   {
     name: 'Skills',
-    hash: '#skills',
+    hash: '/#skills',
   },
   {
     name: 'Experience',
-    hash: '#experience',
+    hash: '/#experience',
   },
   {
-    name: 'Contact',
-    hash: '#contact',
+    name: 'Address Search',
+    hash: '/address-search',
   },
 ] as const
 

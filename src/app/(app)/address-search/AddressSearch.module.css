@@ -1,0 +1,6 @@
+/* src/app/(app)/address-search/AddressSearch.module.css */
+.addressSearchMain {
+  min-block-size: unset !important;
+  padding-block: 1rem !important;
+  border-inline-width: 0 !important;
+}

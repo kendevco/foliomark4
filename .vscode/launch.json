@@ -15,15 +15,26 @@
       "sourceMaps": true
     },
     {
-      "name": "Launch Browser against localhost",
+      "type": "msedge",
+      "request": "attach",
+      "name": "Debug Microsoft Edge",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/public",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*"
+      }
+    },
+    {
       "type": "chrome",
       "request": "launch",
+      "name": "Next.js: Chrome",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}",
-      "sourceMapPathOverrides": {
-        "webpack:///*": "${webRoot}/*",
-        "/*": "${webRoot}/*"
-      }
+      "webRoot": "${workspaceFolder}/",
+      "runtimeExecutable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--user-data-dir=${workspaceFolder}/.vscode/chrome"
+      ]
     },
     {
       "name": "Python: Current File",

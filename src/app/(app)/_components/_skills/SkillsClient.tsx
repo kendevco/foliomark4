@@ -3,7 +3,7 @@
 
 import React from 'react'
 import SectionHeading from '../section-heading'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { useSectionInView } from '@/lib/hooks'
 
 type Skill = {

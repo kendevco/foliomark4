@@ -9,6 +9,7 @@ import ProjectsServer from './_components/_projects/ProjectsServer'
 import SkillsServer from './_components/_skills/SkillsServer'
 import ExperiencesServer from './_components/_experiences/ExperiencesServer'
 import Footer from './_components/footer'
+import AddressVerifier from './_components/addressverifier'
 
 export default function Home() {
   return (

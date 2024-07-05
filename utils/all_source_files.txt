@@ -5,8 +5,6 @@
   "printWidth": 100,
   "semi": false
 }
-
-
 // components.json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -25,15 +23,11 @@
     "utils": "@/lib/utils"
   }
 }
-
 // next-env.d.ts
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
-
 // NOTE: This file should not be edited
 // see https://nextjs.org/docs/basic-features/typescript for more information.
-
-
 // package.json
 {
   "name": "next-latest-starter-kendev",
@@ -57,36 +51,44 @@
     "node": "^18.20.2 || >=20.9.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.583.0",
-    "@aws-sdk/credential-provider-env": "^3.577.0",
-    "@aws-sdk/lib-storage": "^3.583.0",
-    "@payloadcms/db-mongodb": "3.0.0-beta.52",
-    "@payloadcms/db-postgres": "3.0.0-beta.52",
-    "@payloadcms/next": "3.0.0-beta.52",
-    "@payloadcms/richtext-lexical": "3.0.0-beta.52",
-    "@payloadcms/richtext-slate": "3.0.0-beta.52",
-    "@payloadcms/storage-s3": "3.0.0-beta.52",
-    "@payloadcms/ui": "3.0.0-beta.52",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@react-email/components": "^0.0.17",
-    "@react-email/tailwind": "^0.0.16",
-    "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@aws-sdk/credential-provider-env": "^3.598.0",
+    "@aws-sdk/lib-storage": "^3.600.0",
+    "@payloadcms/db-mongodb": "3.0.0-beta.56",
+    "@payloadcms/db-postgres": "3.0.0-beta.56",
+    "@payloadcms/next": "3.0.0-beta.56",
+    "@payloadcms/plugin-cloud-storage": "3.0.0-beta.56",
+    "@payloadcms/richtext-lexical": "3.0.0-beta.56",
+    "@payloadcms/richtext-slate": "3.0.0-beta.56",
+    "@payloadcms/storage-s3": "3.0.0-beta.56",
+    "@payloadcms/ui": "3.0.0-beta.56",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-popover": "^1.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@react-email/components": "0.0.17",
+    "@react-email/tailwind": "0.0.16",
+    "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
     "cross-env": "^7.0.3",
-    "framer-motion": "^11.2.4",
-    "graphql": "^16.8.2",
+    "framer-motion": "^11.2.11",
+    "graphql": "^16.9.0",
+    "leaflet": "^1.9.4",
+    "leaflet-geosearch": "^4.0.0",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.378.0",
-    "next": "15.0.0-rc.0",
-    "payload": "3.0.0-beta.52",
-    "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
-    "react-email": "^2.1.2",
+    "next": "v15.0.0-canary.48",
+    "payload": "3.0.0-beta.56",
+    "react": "19.0.0-rc-fb9a90fa48-20240614",
+    "react-dom": "19.0.0-rc-fb9a90fa48-20240614",
+    "react-email": "^2.1.4",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
-    "react-intersection-observer": "^9.10.2",
+    "react-intersection-observer": "^9.10.3",
+    "react-leaflet": "^4.2.1",
     "react-vertical-timeline-component": "^3.6.0",
-    "resend": "^3.2.0",
+    "resend": "^3.3.0",
     "sharp": "0.32.6",
     "slate": "^0.103.0",
     "slate-react": "^0.104.0",
@@ -94,8 +96,9 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@payloadcms/graphql": "3.0.0-beta.52",
-    "@types/node": "^20.14.5",
+    "@payloadcms/graphql": "3.0.0-beta.56",
+    "@types/leaflet": "^1.9.12",
+    "@types/node": "^20.14.8",
     "@types/react": "npm:types-react@19.0.0-beta.2",
     "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
     "@types/react-vertical-timeline-component": "^3.3.6",
@@ -104,8 +107,8 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "15.0.0-rc.0",
     "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
   },
   "pnpm": {
     "overrides": {
@@ -118,8 +121,6 @@
     "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2"
   }
 }
-
-
 // postcss.config.js
 export default {
   plugins: {
@@ -127,53 +128,86 @@ export default {
     autoprefixer: {},
   },
 }
-
-
 // README.md
-# Payload Blank Template
-
-A blank template for [Payload](https://github.com/payloadcms/payload) to help you get up and running quickly. This repo may have been created by running `npx create-payload-app@latest` and selecting the "blank" template or by cloning this template on [Payload Cloud](https://payloadcms.com/new/clone/blank).
-
-See the official [Examples Directory](https://github.com/payloadcms/payload/tree/main/examples) for details on how to use Payload in a variety of different ways.
-
+# foliomark4
+It is now the publicly available source for [folio.kendev.co](https://folio.kendev.co), my folio website. Powered by Payload CMS 3.0 Beta .53.
+Includes interesting pattern for separating components into server and client components. Mail functionality still doesn't work and 
+storage-s3 provider was working but stopped with no configuration or other changes. 
+Project includes smart seed function to seed the database with my data. You can change the seed data to reflect your skills and experiences etc.
 ## Development
-
 To spin up the project locally, follow these steps:
-
-1. First clone the repo
-1. Then `cd YOUR_PROJECT_REPO && cp .env.example .env`
-1. Next `yarn && yarn dev` (or `docker-compose up`, see [Docker](#docker))
-1. Now `open http://localhost:3000/admin` to access the admin panel
-1. Create your first admin user using the form on the page
-
+1. **Clone the repo:**
+   ```
+   git clone https://github.com/kendevco/foliomark4.git
+   ```
+2. **Navigate to the project directory and copy the environment variables file:**
+   ```
+   cd foliomark4 && cp .env.example .env
+   ```
+3. **Configure the .env file:**
+   Open the `.env` file in a text editor and add the following content:
+   ```plaintext
+   DATABASE_URI=postgres://<username>:<password>@<host>:<port>/<database>
+   PAYLOAD_SECRET=<your_payload_secret>
+   RESEND_API_KEY=<your_resend_api_key>
+   EMAIL_ADDRESS_FROM=your.mail@gmail.com
+   VAPI_PUBLIC_KEY=<your_vapi_public_key>
+   VAPI_AGENT_ID=<your_vapi_agent_id>
+   RESET_MEDIA_FIELDS=false
+   PAYLOAD_PUBLIC_CLOUD_STORAGE_ADAPTER=s3
+   S3_BUCKET_NAME=<your_s3_bucket_name>
+   S3_ACCESS_KEY=<your_s3_access_key>
+   S3_SECRET_KEY=<your_s3_secret_key>
+   S3_ENDPOINT=<your_s3_endpoint>
+   S3_REGION=us-east-1
+   PAYLOAD_SEED=false
+   ```
+   Replace the placeholder values (`<your_payload_secret>`, `<your_resend_api_key>`, etc.) with your actual credentials. For more information on obtaining these keys, visit the respective vendor websites:
+   - [Resend API](https://resend.io)
+   - [VAPI](https://vapi.com)
+   - [Supabase S3](https://supabase.com)
+4. **Install dependencies and start the development server:**
+   ```
+   yarn && yarn dev
+   ```
+   or
+   ```
+   docker-compose up
+   ```
+   (see [Docker](#docker) for more details)
+5. **Access the admin panel:**
+   Open [http://localhost:3000/admin](http://localhost:3000/admin) to access the admin panel and create your first admin user using the form on the page.
 That's it! Changes made in `./src` will be reflected in your app.
-
 ### Docker
-
 Alternatively, you can use [Docker](https://www.docker.com) to spin up this project locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
+1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root.
+2. Next run `docker-compose up`.
+3. Follow [steps 4 and 5 from above](#development) to login and create your first admin user.
 That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
 ## Production
-
 To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
-
-1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
-
+1. **Build the project:**
+   ```
+   yarn build
+   ```
+   or
+   ```
+   npm run build
+   ```
+   This creates a `./build` directory with a production-ready admin bundle.
+2. **Serve the project:**
+   ```
+   yarn serve
+   ```
+   or
+   ```
+   npm run serve
+   ```
+   This will run Node in production and serve Payload from the `./build` directory.
 ### Deployment
-
 The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
-
 ## Questions
-
 If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
-
-
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -252,10 +286,10 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
-
 // tsconfig.json
 {
   "compilerOptions": {
+    "types": ["react", "framer-motion"],
     "baseUrl": ".",
     "lib": [
       "dom",
@@ -301,8 +335,6 @@ module.exports = {
     "node_modules"
   ]
 }
-
-
 // react-email-starter\package.json
 {
   "name": "emails",
@@ -323,38 +355,25 @@ module.exports = {
     "@types/react-dom": "18.2.14"
   }
 }
-
-
 // react-email-starter\readme.md
 # React Email Starter
-
 A live preview right in your browser so you don't need to keep sending real emails during development.
-
 ## Getting Started
-
 First, install the dependencies:
-
 ```sh
 npm install
 # or
 yarn
 ```
-
 Then, run the development server:
-
 ```sh
 npm run dev
 # or
 yarn dev
 ```
-
 Open [localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## License
-
 MIT License
-
-
 // react-email-starter\emails\notion-magic-link.tsx
 import {
   Body,
@@ -368,15 +387,12 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
-
 interface NotionMagicLinkEmailProps {
   loginCode?: string;
 }
-
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
-
 export const NotionMagicLinkEmail = ({
   loginCode,
 }: NotionMagicLinkEmailProps) => (
@@ -444,23 +460,18 @@ export const NotionMagicLinkEmail = ({
     </Body>
   </Html>
 );
-
 NotionMagicLinkEmail.PreviewProps = {
   loginCode: "sparo-ndigo-amurt-secan",
 } as NotionMagicLinkEmailProps;
-
 export default NotionMagicLinkEmail;
-
 const main = {
   backgroundColor: "#ffffff",
 };
-
 const container = {
   paddingLeft: "12px",
   paddingRight: "12px",
   margin: "0 auto",
 };
-
 const h1 = {
   color: "#333",
   fontFamily:
@@ -470,7 +481,6 @@ const h1 = {
   margin: "40px 0",
   padding: "0",
 };
-
 const link = {
   color: "#2754C5",
   fontFamily:
@@ -478,7 +488,6 @@ const link = {
   fontSize: "14px",
   textDecoration: "underline",
 };
-
 const text = {
   color: "#333",
   fontFamily:
@@ -486,7 +495,6 @@ const text = {
   fontSize: "14px",
   margin: "24px 0",
 };
-
 const footer = {
   color: "#898989",
   fontFamily:
@@ -496,7 +504,6 @@ const footer = {
   marginTop: "12px",
   marginBottom: "24px",
 };
-
 const code = {
   display: "inline-block",
   padding: "16px 4.5%",
@@ -506,8 +513,6 @@ const code = {
   border: "1px solid #eee",
   color: "#333",
 };
-
-
 // react-email-starter\emails\plaid-verify-identity.tsx
 import {
   Body,
@@ -521,15 +526,12 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
-
 interface PlaidVerifyIdentityEmailProps {
   validationCode?: string;
 }
-
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
-
 export const PlaidVerifyIdentityEmail = ({
   validationCode,
 }: PlaidVerifyIdentityEmailProps) => (
@@ -564,18 +566,14 @@ export const PlaidVerifyIdentityEmail = ({
     </Body>
   </Html>
 );
-
 PlaidVerifyIdentityEmail.PreviewProps = {
   validationCode: "144833",
 } as PlaidVerifyIdentityEmailProps;
-
 export default PlaidVerifyIdentityEmail;
-
 const main = {
   backgroundColor: "#ffffff",
   fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
 };
-
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #eee",
@@ -586,11 +584,9 @@ const container = {
   margin: "0 auto",
   padding: "68px 0 130px",
 };
-
 const logo = {
   margin: "0 auto",
 };
-
 const tertiary = {
   color: "#0a85ea",
   fontSize: "11px",
@@ -603,7 +599,6 @@ const tertiary = {
   textTransform: "uppercase" as const,
   textAlign: "center" as const,
 };
-
 const secondary = {
   color: "#000",
   display: "inline-block",
@@ -615,7 +610,6 @@ const secondary = {
   marginTop: "0",
   textAlign: "center" as const,
 };
-
 const codeContainer = {
   background: "rgba(0,0,0,.05)",
   borderRadius: "4px",
@@ -623,7 +617,6 @@ const codeContainer = {
   verticalAlign: "middle",
   width: "280px",
 };
-
 const code = {
   color: "#000",
   display: "inline-block",
@@ -638,7 +631,6 @@ const code = {
   width: "100%",
   textAlign: "center" as const,
 };
-
 const paragraph = {
   color: "#444",
   fontSize: "15px",
@@ -649,12 +641,10 @@ const paragraph = {
   margin: "0",
   textAlign: "center" as const,
 };
-
 const link = {
   color: "#444",
   textDecoration: "underline",
 };
-
 const footer = {
   color: "#000",
   fontSize: "12px",
@@ -667,8 +657,6 @@ const footer = {
   textAlign: "center" as const,
   textTransform: "uppercase" as const,
 };
-
-
 // react-email-starter\emails\stripe-welcome.tsx
 import {
   Body,
@@ -684,11 +672,9 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
-
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
-
 export const StripeWelcomeEmail = () => (
   <Html>
     <Head />
@@ -767,43 +753,34 @@ export const StripeWelcomeEmail = () => (
     </Body>
   </Html>
 );
-
 export default StripeWelcomeEmail;
-
 const main = {
   backgroundColor: "#f6f9fc",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
-
 const container = {
   backgroundColor: "#ffffff",
   margin: "0 auto",
   padding: "20px 0 48px",
   marginBottom: "64px",
 };
-
 const box = {
   padding: "0 48px",
 };
-
 const hr = {
   borderColor: "#e6ebf1",
   margin: "20px 0",
 };
-
 const paragraph = {
   color: "#525f7f",
-
   fontSize: "16px",
   lineHeight: "24px",
   textAlign: "left" as const,
 };
-
 const anchor = {
   color: "#556cd6",
 };
-
 const button = {
   backgroundColor: "#656ee8",
   borderRadius: "5px",
@@ -816,14 +793,11 @@ const button = {
   width: "100%",
   padding: "10px",
 };
-
 const footer = {
   color: "#8898aa",
   fontSize: "12px",
   lineHeight: "16px",
 };
-
-
 // react-email-starter\emails\vercel-invite-user.tsx
 import {
   Body,
@@ -843,7 +817,6 @@ import {
 } from "@react-email/components";
 import { Tailwind } from "@react-email/tailwind";
 import * as React from "react";
-
 interface VercelInviteUserEmailProps {
   username?: string;
   userImage?: string;
@@ -855,11 +828,9 @@ interface VercelInviteUserEmailProps {
   inviteFromIp?: string;
   inviteFromLocation?: string;
 }
-
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
-
 export const VercelInviteUserEmail = ({
   username,
   userImage,
@@ -872,7 +843,6 @@ export const VercelInviteUserEmail = ({
   inviteFromLocation,
 }: VercelInviteUserEmailProps) => {
   const previewText = `Join ${invitedByUsername} on Vercel`;
-
   return (
     <Html>
       <Head />
@@ -965,7 +935,6 @@ export const VercelInviteUserEmail = ({
     </Html>
   );
 };
-
 VercelInviteUserEmail.PreviewProps = {
   username: "alanturing",
   userImage: `${baseUrl}/static/vercel-user.png`,
@@ -977,10 +946,7 @@ VercelInviteUserEmail.PreviewProps = {
   inviteFromIp: "204.13.186.218",
   inviteFromLocation: "São Paulo, Brazil",
 } as VercelInviteUserEmailProps;
-
 export default VercelInviteUserEmail;
-
-
 // src\payload-types.ts
 /* tslint:disable */
 /* eslint-disable */
@@ -989,7 +955,6 @@ export default VercelInviteUserEmail;
  * DO NOT MODIFY IT BY HAND. Instead, modify your source Payload config,
  * and re-run `payload generate:types` to regenerate this file.
  */
-
 export interface Config {
   collections: {
     users: User;
@@ -1173,12 +1138,9 @@ export interface PayloadMigration {
   updatedAt: string;
   createdAt: string;
 }
-
-
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }
-
 // src\payload.config.ts
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -1187,22 +1149,14 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { s3Storage } from '@payloadcms/storage-s3' // New S3 storage package
-
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Documents } from './collections/Documents'
-
 import Seeder from './scripts/seeder' // Import the seeder
-
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
 const S3_ACCESS_KEY = process.env.S3_ACCESS_KEY || ''
 const S3_SECRET_KEY = process.env.S3_SECRET_KEY || ''
 const S3_REGION = process.env.S3_REGION || ''
 const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME || ''
 const S3_ENDPOINT = process.env.S3_ENDPOINT || ''
-
 export default buildConfig({
   editor: lexicalEditor(),
   collections: [
@@ -1245,6 +1199,9 @@ export default buildConfig({
     {
       slug: 'media',
       upload: true,
+      access: {
+        read: () => true, // Allow anyone to read from the media collection
+      },
       fields: [
         {
           name: 'text',
@@ -1302,7 +1259,6 @@ export default buildConfig({
       collection: 'users',
       limit: 1,
     })
-
     if (existingUsers.docs.length === 0) {
       await payload.create({
         collection: 'users',
@@ -1312,28 +1268,21 @@ export default buildConfig({
         },
       })
     }
-
     if (process.env.PAYLOAD_SEED === 'true') {
       await Seeder(payload) // Run seeder if PAYLOAD_SEED is set
     }
   },
 })
-
-
 // src\actions\sendEmail.ts
 'use server'
-
 import React from 'react'
 import { Resend } from 'resend'
 import { validateString, getErrorMessage } from '@/lib/utils'
 import ContactFormEmail from '@/email/contact-form-email'
-
 const resend = new Resend(process.env.RESEND_API_KEY)
-
 export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get('senderEmail')
   const message = formData.get('message')
-
   // simple server-side validation
   if (!validateString(senderEmail, 500)) {
     return {
@@ -1362,15 +1311,11 @@ export const sendEmail = async (formData: FormData) => {
       error: getErrorMessage(error),
     }
   }
-
   return {
     data,
   }
 }
-
-
 // src\app\(app)\globals.scss
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1379,7 +1324,6 @@ export const sendEmail = async (formData: FormData) => {
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
-
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
  
@@ -1400,7 +1344,6 @@ export const sendEmail = async (formData: FormData) => {
  
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
-
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
     --ring: 20 14.3% 4.1%;
@@ -1447,17 +1390,14 @@ export const sendEmail = async (formData: FormData) => {
     @apply bg-background text-foreground;
   }
 }
-
 * {
   box-sizing: border-box;
 }
-
 html {
   width: 100%;
   height: 100%;
   background-color: #000000;
 }
-
 body {
   color: #ffffff;
   margin: 0;
@@ -1467,7 +1407,6 @@ body {
   width: 100%;
   padding: 0 20px;
 }
-
 main {
   position: relative;
   display: flex;
@@ -1481,24 +1420,20 @@ main {
   border-inline-width: 1px;
   border-inline-style: solid;
   border-image: linear-gradient(180deg, #ffffff00, #ffffff00, #ffffff1a, #ffffff00) 1;
-
   @media screen and (max-width: 600px) {
     padding-block: 20px;
   }
 }
-
 article {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 60px 80px;
-
   @media screen and (max-width: 600px) {
     padding: 40px 40px;
   }
 }
-
 .badge {
   display: flex;
   align-items: center;
@@ -1510,7 +1445,6 @@ article {
   text-transform: uppercase;
   letter-spacing: 2.6px;
 }
-
 h1 {
   color: #ffffff;
   font-size: 4rem;
@@ -1518,12 +1452,10 @@ h1 {
   line-height: normal;
   letter-spacing: -0.02rem;
   margin: 0;
-
   @media screen and (max-width: 600px) {
     font-size: 2rem;
   }
 }
-
 p {
   color: #ffffff;
   font-size: 16px;
@@ -1531,32 +1463,26 @@ p {
   line-height: 28px;
   margin: 0;
 }
-
 a {
   color: #ffffff;
   text-decoration: underline;
   transition: color 0.2s ease-out;
-
   &:hover {
     color: #ffffff80;
   }
 }
-
 .codeBlock {
   position: relative;
   background-color: #00000066;
   margin: 0;
   padding: 0;
-
   pre {
     margin: 0;
     padding: 60px 80px;
     overflow-x: auto;
-
     @media screen and (max-width: 600px) {
       padding: 40px 40px;
     }
-
     &::before {
       content: '';
       display: block;
@@ -1568,7 +1494,6 @@ a {
       background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
       z-index: 1;
     }
-
     &::after {
       content: url('/crosshair.svg');
       display: block;
@@ -1579,12 +1504,10 @@ a {
       left: -10px;
     }
   }
-
   code {
     font-size: 14px;
     line-height: 2;
   }
-
   &::before {
     content: '';
     display: block;
@@ -1596,7 +1519,6 @@ a {
     background: linear-gradient(90deg, #ffffff00, #ffffff1a, #ffffff1a, #ffffff00);
     z-index: 1;
   }
-
   &::after {
     content: url('/crosshair.svg');
     display: block;
@@ -1607,7 +1529,6 @@ a {
     right: -10px;
   }
 }
-
 .background {
   position: fixed;
   top: 0;
@@ -1615,7 +1536,6 @@ a {
   width: 100%;
   height: 100%;
   z-index: -1;
-
   div.blur {
     display: block;
     position: absolute;
@@ -1628,7 +1548,6 @@ a {
     -webkit-backdrop-filter: blur(60px);
     backdrop-filter: blur(60px);
   }
-
   div.gradient {
     display: block;
     position: absolute;
@@ -1639,37 +1558,33 @@ a {
     background-position: center;
     z-index: -2;
   }
-
-
 }
 .project-card {
   margin-bottom: .5rem; /* Adjust this value as needed */
 }
-
-
-
-
-
-
+.first-element::before {
+  /* Ensure the line continues below the first element */
+  top: 0;
+}
+.last-element::after {
+  /* Ensure the line stops at the last element */
+  height: 50%;
+}
+// src\app\(app)\layout.tsx
 // src\app\(app)\layout.tsx
 import React from 'react'
 import { Outfit } from 'next/font/google'
 import './globals.scss'
-
 import ActiveSectionContextProvider from '@/context/active-section-context'
 import Header from './_components/header'
-
 import ThemeSwitch from './_components/theme-switch'
 import ThemeContextProvider from '@/context/theme-context'
 import { Toaster } from 'react-hot-toast'
-
 const font = Outfit({ subsets: ['latin'] })
-
 export const metadata = {
   title: 'Kenneth Courtney | Personal Portfolio',
   description: 'Ken is a full-stack developer with 15 years of experience.',
 }
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="!scroll-smooth">
@@ -1678,12 +1593,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
         <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
-
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
             <Header />
             {children}
-
             <Toaster position="top-right" />
             <ThemeSwitch />
           </ActiveSectionContextProvider>
@@ -1692,13 +1605,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-
 // src\app\(app)\page.tsx
-import About from './_components/about'
+import AboutServer from './_components/_about/AboutServer'
 import Contact from './_components/contact'
 import Intro from './_components/intro'
-
 import Projects from './_components/projects'
 import SectionDivider from './_components/section-divider'
 import Skills from './_components/skills'
@@ -1706,34 +1616,74 @@ import ProjectsServer from './_components/_projects/ProjectsServer'
 import SkillsServer from './_components/_skills/SkillsServer'
 import ExperiencesServer from './_components/_experiences/ExperiencesServer'
 import Footer from './_components/footer'
-
+import AddressVerifier from './_components/addressverifier'
 export default function Home() {
   return (
     <main className="flex flex-col items-center px-4">
       <Intro />
-      <About />
+      <AboutServer />
       <ProjectsServer />
-
       <SkillsServer />
       <ExperiencesServer />
-      {/*<Contact /> */}
+      <Contact />
       <Footer />
     </main>
   )
 }
-
-
+// src\app\(app)\address-search\AddressSearch.module.css
+/* src/app/(app)/address-search/AddressSearch.module.css */
+.addressSearchMain {
+  min-block-size: unset !important;
+  padding-block: 1rem !important;
+  border-inline-width: 0 !important;
+}
+// src\app\(app)\address-search\AddressVerifierWrapper.tsx
+// src/app/(app)/address-search/AddressVerifierWrapper.tsx
+'use client'
+import React from 'react'
+import AddressVerifier from '../_components/addressverifier'
+const AddressVerifierWrapper: React.FC = () => {
+  const handleSelectLocation = (location: any) => {
+    console.log(location)
+    // Handle the selected location as needed
+  }
+  return <AddressVerifier onSelectLocation={handleSelectLocation} />
+}
+export default AddressVerifierWrapper
+// src\app\(app)\address-search\page.tsx
+// src/app/(app)/address-search/page.tsx
+'use client'
+import React from 'react'
+import AddressSearchAndMap from '../_components/AddressSearchAndMap'
+import styles from './AddressSearch.module.css'
+export default function AddressSearchPage() {
+  const handleSelectLocation = (location: any) => {
+    console.log(location)
+    // Handle the selected location as needed
+  }
+  return (
+    <main
+      className={`flex flex-grow flex-col items-center w-full h-full max-w-6xl mx-auto ${styles.addressSearchMain}`}
+    >
+      <h1 className="mb-4 text-2xl font-bold">Address Search</h1>
+      <div className="flex-grow w-full overflow-hidden">
+        <AddressSearchAndMap
+          layout="responsive"
+          onSelectLocation={handleSelectLocation}
+          distance={1000}
+        />
+      </div>
+    </main>
+  )
+}
 // src\app\(app)\_components\about.tsx
 'use client'
-
 import React from 'react'
 import SectionHeading from './section-heading'
 import { motion } from 'framer-motion'
 import { useSectionInView } from '@/lib/hooks'
-
 export default function About() {
   const { ref } = useSectionInView('About')
-
   return (
     <motion.section
       ref={ref}
@@ -1744,63 +1694,256 @@ export default function About() {
       id="about"
     >
       <SectionHeading>About me</SectionHeading>
-      <div className="inline-block w-full text-justify">
-        <p className="mb-3">
+      <div className="inline-block w-full text-justify text-gray-950 dark:text-gray-300">
+        <p className="mb-1  text-gray-950 dark:text-gray-300">
           As a seasoned full stack developer and .NET expert with over 20 years of experience, I
           bring a rich blend of technical acumen and innovative thinking to the forefront of
           technology development. My journey spans designing, developing, and delivering complex
           business solutions, with a specialized focus on integrating cutting-edge AI technologies.
         </p>
-        <p>
+        <p className="mb-1  text-gray-950 dark:text-gray-300">
           I am proficient in a diverse array of JavaScript frameworks, including NextJS, Vue 3,
           React, jQuery, AJAX, and Angular, and have deep expertise in .NET frameworks such as
           ASP.NET, VB.NET, C#, WPF, Web API, and Azure. My technical portfolio also extends to the
           DNN (DotNetNuke) platform, where I have built custom modules and enhancements,
           demonstrating my prowess in this domain.
         </p>
-        <p>
+        <p className="mb-1  text-gray-950 dark:text-gray-300">
           My skills in generative AI technologies set me apart in the industry. I excel in writing
           personalized Chat GPT clients and agents, fine-tuning OpenAI and other open-source LLMs.
           My proficiency in using vector encodings for document search and crafting custom
           generative AI solutions is a testament to my ability to stay ahead in the tech curve.
         </p>
-        <p>
+        <p className="mb-1  text-gray-950 dark:text-gray-300">
           With a strong background in database development, including Mongo, Atlas, Supabase,
           Firebase, SQL Server, T-SQL, and SQL Reporting, I bring a comprehensive skill set to the
           table. My experience in SOA and integration technologies, encompassing XML, Web Services,
           and BizTalk, further complements my technical expertise.
         </p>
-        <p>
+        <p className="mb-1  text-gray-950 dark:text-gray-300">
           I am eager to leverage my extensive technical expertise, leadership skills, and innovative
           approach in a hands-on technology leadership role. I am excited to explore opportunities
           where I can drive innovation and deliver exceptional results for your organization.
           Let&apos;s connect and discuss how I can contribute to your team.
         </p>
       </div>
-
       {false && <div className="inline-block w-full text-justify">Vapi Bot Here</div>}
     </motion.section>
   )
 }
-
-
+// src\app\(app)\_components\AddressSearchAndMap.tsx
+// src/app/(app)/_components/AddressSearchAndMap.tsx
+'use client'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
+import AddressVerifier from './addressverifier'
+import DynamicMap from './DynamicMap'
+import { LatLngExpression, LatLngTuple } from 'leaflet'
+import fetchRestrictedZones from '../../hooks/fetchRestrictedZones'
+interface AddressSearchAndMapProps {
+  layout: 'responsive'
+  onSelectLocation: (location: any) => void
+  distance: number
+}
+const AddressSearchAndMap: React.FC<AddressSearchAndMapProps> = ({
+  layout,
+  onSelectLocation,
+  distance,
+}) => {
+  const [selectedItem, setSelectedItem] = useState<any>(null)
+  const [nearbyPlaces, setNearbyPlaces] = useState<any[]>([])
+  const [failingItems, setFailingItems] = useState<any[]>([])
+  const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation([position.coords.latitude, position.coords.longitude])
+          setIsLoading(false)
+        },
+        (error) => {
+          console.error('Error getting user location:', error)
+          setIsLoading(false)
+        },
+      )
+    } else {
+      setIsLoading(false)
+    }
+  }, [])
+  const handleLocationSelect = useCallback(
+    async (item: any) => {
+      console.log('Location selected:', item)
+      setSelectedItem(item)
+      onSelectLocation(item)
+      try {
+        const { nearbyPlaces, failingItems } = await fetchRestrictedZones(item, distance)
+        setNearbyPlaces(nearbyPlaces)
+        setFailingItems(failingItems)
+      } catch (error) {
+        console.error('Error fetching restricted zones:', error)
+        setNearbyPlaces([])
+        setFailingItems([])
+      }
+    },
+    [onSelectLocation, distance],
+  )
+  const mapCenter: LatLngTuple | null = useMemo(() => {
+    if (selectedItem && typeof selectedItem.y === 'number' && typeof selectedItem.x === 'number') {
+      return [selectedItem.y, selectedItem.x]
+    }
+    return userLocation
+  }, [selectedItem, userLocation])
+  console.log('Rendering AddressSearchAndMap', { mapCenter, isLoading, nearbyPlaces })
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  return (
+    <div className="flex flex-col w-full gap-6 lg:flex-row">
+      <div className="w-full space-y-6 lg:w-1/2">
+        <AddressVerifier onSelectLocation={handleLocationSelect} />
+        {nearbyPlaces.length > 0 && (
+          <div className="overflow-hidden bg-gray-100 border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <h2 className="px-4 py-3 font-semibold text-blue-700 border-b border-blue-100 bg-blue-50 dark:bg-gray-700 dark:text-blue-300 dark:border-gray-600">
+              Nearby Places (within 2500 feet)
+            </h2>
+            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+              {nearbyPlaces.map((item, index) => (
+                <li
+                  key={index}
+                  className="p-4 transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-medium text-gray-900 dark:text-gray-100">{item.name}</h3>
+                      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        {item.types.join(', ')}
+                      </p>
+                    </div>
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        item.distance <= distance
+                          ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                          : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                      }`}
+                    >
+                      {item.distance.toFixed(2)} feet
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {failingItems.length > 0 && (
+          <div className="overflow-hidden bg-red-100 border border-red-200 rounded-lg shadow-sm dark:bg-red-900 dark:border-red-700">
+            <h2 className="px-4 py-3 font-semibold text-red-700 border-b border-red-100 bg-red-50 dark:bg-red-800 dark:text-red-200 dark:border-red-600">
+              Non-compliant Items
+            </h2>
+            <ul className="divide-y divide-red-100 dark:divide-red-700">
+              {failingItems.map((item, index) => (
+                <li
+                  key={index}
+                  className="p-4 transition-colors duration-150 hover:bg-red-50 dark:hover:bg-red-800"
+                >
+                  <h3 className="font-medium text-red-900 dark:text-red-100">{item.name}</h3>
+                  <p className="mt-1 text-sm text-red-700 dark:text-red-200">
+                    {item.types.join(', ')}
+                  </p>
+                  <p className="mt-2 text-sm font-medium text-red-900 dark:text-red-100">
+                    Distance: {item.distance.toFixed(2)} feet
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+      <div className="w-full lg:w-1/2">
+        {mapCenter ? (
+          <div className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden h-[600px]">
+            <DynamicMap
+              key={`${mapCenter[0]}-${mapCenter[1]}`}
+              center={mapCenter}
+              restrictedZones={nearbyPlaces}
+              userLocation={userLocation}
+              distance={distance}
+            />
+          </div>
+        ) : (
+          <div className="flex items-center justify-center h-[600px] bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+            <p className="text-gray-500 dark:text-gray-400">Select a location to view the map</p>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+export default AddressSearchAndMap
+// src\app\(app)\_components\addressverifier.tsx
+// src/app/(app)/_components/AddressVerifier.tsx
+'use client'
+import React, { useState, useCallback } from 'react'
+import { Input } from '@/components/ui/input'
+import { useSearchAddress } from '../../hooks/useSearchAddress'
+const AddressVerifier: React.FC<{ onSelectLocation: (location: any) => void }> = ({
+  onSelectLocation,
+}) => {
+  const { query, results, loading, handleSearch, selectedItem, setSelectedItem } =
+    useSearchAddress()
+  const handleSelect = useCallback(
+    (item: any) => {
+      setSelectedItem(item)
+      onSelectLocation(item)
+    },
+    [onSelectLocation, setSelectedItem],
+  )
+  return (
+    <div>
+      <Input
+        type="text"
+        placeholder="Search for an address..."
+        value={query}
+        onChange={(e) => handleSearch(e.target.value)}
+        className="box-border w-full p-2 mb-2"
+      />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="relative p-2 overflow-y-auto border border-gray-300 rounded-md max-h-50">
+          {Object.keys(results).map((type) => (
+            <div key={type} className="mb-2">
+              <h4 className="m-0 mb-1">{type}</h4>
+              <ul className="p-0 m-0 list-none">
+                {results[type].map((item: any) => (
+                  <li
+                    key={item.label}
+                    onClick={() => handleSelect(item)}
+                    className="p-1 cursor-pointer"
+                  >
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+export default React.memo(AddressVerifier)
 // src\app\(app)\_components\contact.tsx
 'use client'
-
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SectionHeading from './section-heading'
 import { motion } from 'framer-motion'
 import { useSectionInView } from '@/lib/hooks'
 import { sendEmail } from '@/actions/sendEmail'
 import SubmitBtn from './submit-btn'
 import { toast } from 'react-hot-toast'
-import { useEffect, useState } from 'react'
-
 export default function Contact() {
   const { ref } = useSectionInView('Contact')
-
   const [encodedEmail, setEncodedEmail] = useState('')
-
   useEffect(() => {
     const email = 'kenneth.courtney@gmail.com'
     const encoded = Array.from(email)
@@ -1808,52 +1951,39 @@ export default function Contact() {
       .join('')
     setEncodedEmail(encoded)
   }, [])
-
   return (
     <motion.section
       id="contact"
       ref={ref}
       className="mb-20 sm:mb-12 w-[min(100%,38rem)] text-center"
-      initial={{
-        opacity: 0,
-      }}
-      whileInView={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 1,
-      }}
-      viewport={{
-        once: true,
-      }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
     >
       <SectionHeading>Contact me</SectionHeading>
-
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
+      <p className="text-gray-700 -mt-6 dark:text-gray-300">
         Please contact me directly at{' '}
         <a
-          className="underline"
+          className="underline text-blue-600 dark:text-blue-400"
           href={`mailto:${encodedEmail}`}
           dangerouslySetInnerHTML={{ __html: encodedEmail }}
         ></a>{' '}
         or through this form.
       </p>
-
       <form
-        className="mt-10 flex flex-col dark:text-black"
+        className="mt-10 flex flex-col text-gray-900 dark:text-gray-100"
         action={async (formData) => {
           const { data, error } = await sendEmail(formData)
-
           if (error) {
             toast.error(error)
             return
           }
-
           toast.success('Email sent successfully!')
         }}
       >
         <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          className="h-14 px-4 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:focus:bg-gray-700 dark:focus:border-gray-500 focus:ring-2 focus:ring-indigo-500 transition-all outline-none"
           name="senderEmail"
           type="email"
           required
@@ -1861,7 +1991,7 @@ export default function Contact() {
           placeholder="Your email"
         />
         <textarea
-          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          className="h-52 my-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:focus:bg-gray-700 dark:focus:border-gray-500 focus:ring-2 focus:ring-indigo-500 transition-all outline-none p-4"
           name="message"
           placeholder="Your message"
           required
@@ -1872,14 +2002,117 @@ export default function Contact() {
     </motion.section>
   )
 }
-
-
+// src\app\(app)\_components\DynamicMap.tsx
+// src/app/(app)/_components/DynamicMap.tsx
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+import { LatLngExpression } from 'leaflet'
+interface RestrictedZone {
+  lat: number
+  lng: number
+  name: string
+  types: string[]
+  distance: number
+}
+interface DynamicMapProps {
+  center: LatLngExpression
+  restrictedZones: RestrictedZone[]
+  userLocation: LatLngExpression | null
+  distance: number
+}
+const DynamicMap: React.FC<DynamicMapProps> = ({
+  center,
+  restrictedZones,
+  userLocation,
+  distance,
+}) => {
+  const mapRef = useRef<L.Map | null>(null)
+  const [isMapInitialized, setIsMapInitialized] = useState(false)
+  useEffect(() => {
+    console.log('DynamicMap useEffect - map initialization')
+    if (!isMapInitialized && typeof window !== 'undefined') {
+      try {
+        mapRef.current = L.map('map').setView(center, 13)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapRef.current)
+        // Set default icon paths
+        delete (L.Icon.Default.prototype as any)._getIconUrl
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl:
+            'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+          shadowUrl:
+            'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        })
+        setIsMapInitialized(true)
+        console.log('Map initialized successfully')
+      } catch (error) {
+        console.error('Error initializing map:', error)
+      }
+    }
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove()
+        mapRef.current = null
+        setIsMapInitialized(false)
+        console.log('Map cleanup on component unmount')
+      }
+    }
+  }, [])
+  useEffect(() => {
+    console.log('DynamicMap useEffect - update map', { center, isMapInitialized, restrictedZones })
+    if (mapRef.current && isMapInitialized) {
+      try {
+        mapRef.current.setView(center)
+        mapRef.current.eachLayer((layer) => {
+          if (layer instanceof L.Marker || layer instanceof L.Circle) {
+            mapRef.current!.removeLayer(layer)
+          }
+        })
+        // Add marker for the selected location
+        L.marker(center).addTo(mapRef.current).bindTooltip('Selected Location').openTooltip()
+        // Add marker for user location if available
+        if (userLocation) {
+          L.marker(userLocation).addTo(mapRef.current).bindTooltip('Your Location').openTooltip()
+        }
+        // Add circles for restricted zones
+        restrictedZones.forEach((zone) => {
+          L.circle([zone.lat, zone.lng], {
+            color: zone.distance <= distance ? 'red' : 'green',
+            fillColor: zone.distance <= distance ? '#f03' : '#0f3',
+            fillOpacity: 0.2,
+            radius: 304.8, // 1000 feet in meters
+          })
+            .bindTooltip(`${zone.name} - ${zone.distance.toFixed(2)} feet`)
+            .addTo(mapRef.current!)
+        })
+        // Add legend
+        const legend = L.control({ position: 'bottomright' })
+        legend.onAdd = (map) => {
+          const div = L.DomUtil.create('div', 'info legend')
+          div.innerHTML = `
+            <div style="background-color: white; padding: 5px; border-radius: 5px;">
+              <div><span style="color: red;">●</span> Non-compliant</div>
+              <div><span style="color: green;">●</span> Compliant</div>
+            </div>
+          `
+          return div
+        }
+        legend.addTo(mapRef.current)
+        console.log('Map updated successfully')
+      } catch (error) {
+        console.error('Error updating map:', error)
+      }
+    }
+  }, [center, restrictedZones, userLocation, isMapInitialized, distance])
+  return <div id="map" style={{ height: '100%', width: '100%' }}></div>
+}
+export default React.memo(DynamicMap)
 // src\app\(app)\_components\experience.tsx
 'use client'
-
 import React from 'react'
 import ExperiencesServer from './_experiences/ExperiencesServer'
-
 export default function Experiences() {
   return (
     <>
@@ -1887,11 +2120,8 @@ export default function Experiences() {
     </>
   )
 }
-
-
 // src\app\(app)\_components\footer.tsx
 import React from 'react'
-
 export default function Footer() {
   return (
     <footer className="px-4 mb-10 text-center text-gray-500">
@@ -1904,29 +2134,24 @@ export default function Footer() {
     </footer>
   )
 }
-
-
+// src\app\(app)\_components\header.tsx
 // src\app\(app)\_components\header.tsx
 'use client'
-
 import React from 'react'
 import { motion } from 'framer-motion'
 import { links } from '@/lib/data'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useActiveSectionContext } from '@/context/active-section-context'
-
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
-
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-gray-300 border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full dark:bg-gray-900 dark:border-gray-700 dark:bg-opacity-80"
         initial={{ y: -100, x: '-50%', opacity: 0 }}
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       ></motion.div>
-
       <nav className="flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
         <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
@@ -1938,22 +2163,20 @@ export default function Header() {
             >
               <Link
                 href={link.hash}
-                className={clsx(
-                  'flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300',
-                  {
-                    'text-gray-950 dark:text-gray-200': activeSection === link.name,
-                  },
-                )}
+                className={clsx('flex w-full items-center justify-center px-3 py-3 transition', {
+                  'text-gray-900 dark:text-white': activeSection === link.name,
+                  'text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-300':
+                    activeSection !== link.name,
+                })}
                 onClick={() => {
                   setActiveSection(link.name)
                   setTimeOfLastClick(Date.now())
                 }}
               >
                 {link.name}
-
                 {link.name === activeSection && (
                   <motion.span
-                    className="absolute inset-0 bg-gray-100 rounded-full -z-10 dark:bg-gray-800"
+                    className="absolute inset-0 bg-gray-200 rounded-full -z-10 dark:bg-gray-800"
                     layoutId="activeSection"
                     transition={{
                       type: 'spring',
@@ -1970,13 +2193,10 @@ export default function Header() {
     </header>
   )
 }
-
-
 // src\app\(app)\_components\Hero.jsx
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
-
 function Hero() {
   return (
     <section>
@@ -1993,20 +2213,17 @@ function Hero() {
           w-full object-cover"
         />
       </div>
-
       <div className="lg:py-24">
         <h2 className="text-4xl font-bold sm:text-4xl">
             Find & Book 
             <span className='text-primary'> Appointment </span> 
             with your Fav 
             <span className='text-primary '> Doctors</span></h2>
-
         <p className="mt-4 text-gray-500">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut qui hic atque tenetur quis
           eius quos ea neque sunt, accusantium soluta minus veniam tempora deserunt? Molestiae eius
           quidem quam repellat.
         </p>
-
         <Button className="mt-10">Explore Now</Button>
       </div>
     </div>
@@ -2014,13 +2231,10 @@ function Hero() {
 </section>
   )
 }
-
 export default Hero
-
 // src\app\(app)\_components\intro.tsx
-// ./src/app/(app)/_components/intro.tsx
+// src\app\(app)\_components\intro.tsx
 'use client'
-
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -2030,16 +2244,14 @@ import { HiDownload } from 'react-icons/hi'
 import { FaGithubSquare } from 'react-icons/fa'
 import { useSectionInView } from '@/lib/hooks'
 import { useActiveSectionContext } from '@/context/active-section-context'
-
 export default function Intro() {
   const { ref } = useSectionInView('Home', 0.5)
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
-
   return (
     <section
       ref={ref}
       id="home"
-      className="mb-12 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-12 max-w-[50rem] text-center sm:mb-10 scroll-mt-[100rem]"
     >
       <div className="flex items-center justify-center">
         <div className="relative">
@@ -2052,7 +2264,7 @@ export default function Intro() {
             }}
           >
             <Image
-              src="/images/ken.png"
+              src="/api/media/file/ken.webp"
               alt="Ken portrait"
               width="512"
               height="512"
@@ -2061,7 +2273,6 @@ export default function Intro() {
               className="h-512 w-512 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
             />
           </motion.div>
-
           <motion.span
             className="absolute bottom-0 right-0 text-4xl"
             initial={{ opacity: 0, scale: 0 }}
@@ -2077,9 +2288,8 @@ export default function Intro() {
           </motion.span>
         </div>
       </div>
-
       <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl text-gray-900 dark:text-gray-300"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -2089,7 +2299,6 @@ export default function Intro() {
         <span className="italic">sites &amp; apps</span>. My focus is{' '}
         <span className="underline">React (Next.js)</span>.
       </motion.h1>
-
       <motion.div
         className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium sm:flex-row"
         initial={{ opacity: 0, y: 100 }}
@@ -2109,16 +2318,14 @@ export default function Intro() {
           Contact me here{' '}
           <BsArrowRight className="transition opacity-70 group-hover:translate-x-1" />
         </Link>
-
         <a
-          className="flex items-center gap-2 py-3 transition bg-white rounded-full outline-none cursor-pointer group px-7 focus:scale-110 hover:scale-110 active:scale-105 borderBlack dark:bg-white/10"
+          className="flex items-center gap-2 py-3 transition bg-white rounded-full outline-none cursor-pointer group px-7 focus:scale-110 hover:scale-110 active:scale-105 borderBlack dark:bg-white/10 dark:text-white/80"
           href="/CV.pdf"
           download
           title="Download CV"
         >
           Download CV <HiDownload className="transition opacity-60 group-hover:translate-y-1" />
         </a>
-
         <a
           className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
           href="https://www.linkedin.com/in/kendevco/"
@@ -2128,7 +2335,6 @@ export default function Intro() {
         >
           <BsLinkedin />
         </a>
-
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
           href="https://github.com/kendevco"
@@ -2142,14 +2348,120 @@ export default function Intro() {
     </section>
   )
 }
-
-
+// src\app\(app)\_components\Map.tsx
+// src/app/(app)/_components/Map.tsx
+'use client'
+import React, { useEffect, useRef } from 'react'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
+import markerIcon from 'leaflet/dist/images/marker-icon.png'
+import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+// @ts-ignore
+delete L.Icon.Default.prototype._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconUrl: markerIcon.src,
+  iconRetinaUrl: markerIcon2x.src,
+  shadowUrl: markerShadow.src,
+})
+interface MapProps {
+  center: L.LatLngExpression
+  restrictedZones?: L.LatLngExpression[][]
+}
+const Map: React.FC<MapProps> = ({ center, restrictedZones }) => {
+  const mapRef = useRef<L.Map | null>(null)
+  const mapContainerRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (mapContainerRef.current && !mapRef.current) {
+      mapRef.current = L.map(mapContainerRef.current).setView(center, 13)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(mapRef.current)
+      L.marker(center).addTo(mapRef.current)
+      if (restrictedZones) {
+        restrictedZones.forEach((zone, index) => {
+          L.polygon(zone, { color: 'grey', fillOpacity: 0.5 }).addTo(mapRef.current!)
+        })
+      }
+    }
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove()
+        mapRef.current = null
+      }
+    }
+  }, [center, restrictedZones])
+  return <div ref={mapContainerRef} className="h-[35vh] rounded-lg" />
+}
+export default React.memo(Map)
+// src\app\(app)\_components\MapComponent.tsx
+// src/app/(app)/_components/MapComponent.tsx
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+import { LatLngExpression } from 'leaflet'
+interface MapComponentProps {
+  center: LatLngExpression
+  restrictedZones: LatLngExpression[][]
+  userLocation: LatLngExpression | null
+}
+const MapComponent: React.FC<MapComponentProps> = ({ center, restrictedZones, userLocation }) => {
+  const mapRef = useRef<L.Map | null>(null)
+  const [isMapInitialized, setIsMapInitialized] = useState(false)
+  useEffect(() => {
+    console.log('MapComponent useEffect - map initialization')
+    if (!isMapInitialized && typeof window !== 'undefined') {
+      try {
+        mapRef.current = L.map('map').setView(center, 13)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapRef.current)
+        setIsMapInitialized(true)
+        console.log('Map initialized successfully')
+      } catch (error) {
+        console.error('Error initializing map:', error)
+      }
+    }
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove()
+        mapRef.current = null
+        setIsMapInitialized(false)
+        console.log('Map cleanup on component unmount')
+      }
+    }
+  }, [])
+  useEffect(() => {
+    console.log('MapComponent useEffect - update map', { center, isMapInitialized })
+    if (mapRef.current && isMapInitialized) {
+      try {
+        mapRef.current.setView(center)
+        mapRef.current.eachLayer((layer) => {
+          if (layer instanceof L.Marker || layer instanceof L.Polygon) {
+            mapRef.current!.removeLayer(layer)
+          }
+        })
+        L.marker(center).addTo(mapRef.current)
+        if (userLocation) {
+          L.marker(userLocation).addTo(mapRef.current)
+        }
+        restrictedZones.forEach((zone) => {
+          L.polygon(zone).addTo(mapRef.current!)
+        })
+        console.log('Map updated successfully')
+      } catch (error) {
+        console.error('Error updating map:', error)
+      }
+    }
+  }, [center, restrictedZones, userLocation, isMapInitialized])
+  return <div id="map" style={{ height: '100%', width: '100%' }}></div>
+}
+export default React.memo(MapComponent)
 // src\app\(app)\_components\Payload.jsx
 import { Badge } from '@/components/Badge'
 import { Background } from '@/components/Background'
 import Link from 'next/link'
 import React from 'react'
-
 export const PayloadInfo = () => {
   return (
     <>
@@ -2180,11 +2492,9 @@ export const PayloadInfo = () => {
               {`import { getPayload } from 'payload'
                 import configPromise from '@payload-config'
                 const payload = await getPayload({ config: configPromise })
-
                 const data = await payload.find({
                   collection: 'posts',
                 })
-
                 return <Posts data={data} />
                 `}
             </code>
@@ -2195,11 +2505,9 @@ export const PayloadInfo = () => {
     </>
   )
 }
-
 // src\app\(app)\_components\projects.tsx
 // src/app/(app)/_components/projects.tsx
 import ProjectsServer from './_projects/ProjectsServer'
-
 export default function Projects() {
   return (
     <div>
@@ -2207,14 +2515,10 @@ export default function Projects() {
     </div>
   )
 }
-
-
 // src\app\(app)\_components\section-divider.tsx
 "use client";
-
 import React from "react";
 import { motion } from "framer-motion";
-
 export default function SectionDivider() {
   return (
     <motion.div
@@ -2225,15 +2529,11 @@ export default function SectionDivider() {
     ></motion.div>
   );
 }
-
-
 // src\app\(app)\_components\section-heading.tsx
 import React from "react";
-
 type SectionHeadingProps = {
   children: React.ReactNode;
 };
-
 export default function SectionHeading({ children }: SectionHeadingProps) {
   return (
     <h2 className="text-3xl font-medium capitalize mb-8 text-center">
@@ -2241,17 +2541,13 @@ export default function SectionHeading({ children }: SectionHeadingProps) {
     </h2>
   );
 }
-
-
 // src\app\(app)\_components\skills.tsx
-"use client";
-
-import React from "react";
-import SectionHeading from "./section-heading";
-import { skillsData } from "@/lib/data";
-import { useSectionInView } from "@/lib/hooks";
-import { motion } from "framer-motion";
-
+'use client'
+import React from 'react'
+import SectionHeading from './section-heading'
+import { skillsData } from '@/lib/data'
+import { useSectionInView } from '@/lib/hooks'
+import { motion } from 'framer-motion'
 const fadeInAnimationVariants = {
   initial: {
     opacity: 0,
@@ -2264,11 +2560,9 @@ const fadeInAnimationVariants = {
       delay: 0.05 * index,
     },
   }),
-};
-
+}
 export default function Skills() {
-  const { ref } = useSectionInView("Skills");
-
+  const { ref } = useSectionInView('Skills')
   return (
     <section
       id="skills"
@@ -2294,18 +2588,14 @@ export default function Skills() {
         ))}
       </ul>
     </section>
-  );
+  )
 }
-
-
 // src\app\(app)\_components\submit-btn.tsx
 import React from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
 import { useFormStatus } from 'react-dom'
-
 export default function SubmitBtn() {
   const { pending } = useFormStatus()
-
   return (
     <button
       type="submit"
@@ -2323,41 +2613,32 @@ export default function SubmitBtn() {
     </button>
   )
 }
-
-
 // src\app\(app)\_components\theme-switch.tsx
 'use client'
 import { useTheme } from '@/context/theme-context'
 import React, { useState } from 'react'
 import { BsMoon, BsSun } from 'react-icons/bs'
 import { FaArrowUp, FaUser, FaUserAlt } from 'react-icons/fa'
-
 export default function ThemeSwitch() {
   const { theme, toggleTheme } = useTheme()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
-
   const signIn = async () => {
     // Replace with your actual login endpoint and credentials
     const response = null
-
     if (response) {
       setIsLoggedIn(true)
     }
   }
-
   const signOut = async () => {
     // Replace with your actual logout endpoint
     const response = null
-
     if (response) {
       setIsLoggedIn(false)
     }
   }
-
   const handleExtractData = async () => {
     try {
       const response = await fetch('/api/extract-data')
@@ -2371,7 +2652,6 @@ export default function ThemeSwitch() {
       console.error('Error extracting data:', error)
     }
   }
-
   return (
     <>
       <div className="fixed flex gap-4 bottom-5 right-5">
@@ -2382,7 +2662,6 @@ export default function ThemeSwitch() {
         >
           {theme === 'light' ? <BsSun /> : <BsMoon />}
         </button>
-
         <button
           title="Scroll to top"
           className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
@@ -2390,15 +2669,6 @@ export default function ThemeSwitch() {
         >
           <FaArrowUp />
         </button>
-
-        <button
-          title="Extract Data"
-          onClick={handleExtractData}
-          className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
-        >
-          <FaUser />
-        </button>
-
         {isLoggedIn ? (
           <button
             title="Sign out"
@@ -2420,12 +2690,76 @@ export default function ThemeSwitch() {
     </>
   )
 }
-
-
-// src\app\(app)\_components\_experiences\ExperiencesClient.tsx
-// src/ExperiencesClient.tsx
+// src\app\(app)\_components\_about\AboutClient.tsx
+// src/app/(app)/_components/_about/AboutClient.tsx
 'use client'
-
+import React from 'react'
+import SectionHeading from '../section-heading'
+import { motion, HTMLMotionProps } from 'framer-motion'
+import { useSectionInView } from '@/lib/hooks'
+declare module 'framer-motion' {
+  export interface HTMLMotionProps<T> extends React.HTMLAttributes<T> {
+    className?: string
+  }
+}
+type Content = {
+  root: {
+    type: string
+    children: Array<{
+      type: string
+      children: Array<{ mode: string; text: string }>
+    }>
+  }
+}
+export default function AboutClient({ content }: { content: any }) {
+  const { ref } = useSectionInView('About')
+  return (
+    <motion.section
+      ref={ref}
+      className="mb-12 max-w-[45rem] text-center leading-8 sm:mb-15 scroll-mt-28"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.175 }}
+      id="about"
+    >
+      <SectionHeading>About me</SectionHeading>
+      <div className="inline-block w-full text-justify text-gray-950 dark:text-gray-300">
+        {content.root.children.map((paragraph: any, index: number) => (
+          <p key={index} className="mb-1 text-gray-950 dark:text-gray-300">
+            {paragraph.children.map((line: { text: string }) => line.text).join(' ')}
+          </p>
+        ))}
+      </div>
+      {false && <div className="inline-block w-full text-justify">Vapi Bot Here</div>}
+    </motion.section>
+  )
+}
+// src\app\(app)\_components\_about\AboutServer.tsx
+// src/app/(app)/_components/_about/AboutServer.tsx
+import React from 'react'
+import config from '../../../../payload.config'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import AboutClient from './AboutClient'
+import { Page } from '../../../../payload-types'
+export default async function AboutServer() {
+  // Initialize payload
+  const payload = await getPayloadHMR({ config })
+  // Fetch the "About" page data
+  const result = await payload.find({
+    collection: 'pages',
+    where: {
+      title: {
+        equals: 'About Me',
+      },
+    },
+  })
+  const aboutPage: Page = result.docs[0]
+  // Render AboutClient component with the fetched data
+  return <AboutClient content={aboutPage.content} />
+}
+// src\app\(app)\_components\_experiences\ExperiencesClient.tsx
+// src\app\(app)\_components\_experiences\ExperiencesClient.tsx
+'use client'
 import React from 'react'
 import SectionHeading from '../section-heading'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
@@ -2433,18 +2767,14 @@ import 'react-vertical-timeline-component/style.min.css'
 import { useSectionInView } from '@/lib/hooks'
 import { useTheme } from '@/context/theme-context'
 import Image from 'next/image'
-import { Experience } from '../../../../../payload-types'
-
+import { Experience } from '../../../../payload-types'
 export default function ExperiencesClient({ experiences }: { experiences: Experience[] }) {
   const { ref } = useSectionInView('Experience')
   const { theme } = useTheme()
-
   const getBackground = (isLightTheme: boolean): string => {
     return isLightTheme ? '#f3f4f6' : 'rgba(255, 255, 255, 0.05)'
   }
-
   const lineColor = theme === 'light' ? '#e5e7eb' : 'rgba(229, 231, 235, 0.2)'
-
   const isValidUrl = (url: string): boolean => {
     try {
       new URL(url)
@@ -2453,9 +2783,8 @@ export default function ExperiencesClient({ experiences }: { experiences: Experi
       return false
     }
   }
-
   return (
-    <section id="experience" ref={ref} className="scroll-mt-28 mb-12 sm:mb-15">
+    <section id="experience" ref={ref} className="mb-12 scroll-mt-28 sm:mb-15">
       <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor={lineColor}>
         {experiences.map((item, index) => {
@@ -2467,11 +2796,16 @@ export default function ExperiencesClient({ experiences }: { experiences: Experi
               )
               .join(' ')
           }
-
           return (
             <VerticalTimelineElement
               key={index}
-              className="vertical-timeline-element--work"
+              className={`vertical-timeline-element--work custom-timeline-element ${
+                index === 0
+                  ? 'first-element'
+                  : index === experiences.length - 1
+                  ? 'last-element'
+                  : ''
+              }`}
               contentStyle={{
                 background: getBackground(theme === 'light'),
                 boxShadow: 'none',
@@ -2480,21 +2814,22 @@ export default function ExperiencesClient({ experiences }: { experiences: Experi
                 }`,
                 textAlign: 'left',
                 padding: '1.3rem 2rem',
+                color: theme === 'light' ? 'black' : 'white',
               }}
               contentArrowStyle={{
                 borderRight: `7px solid ${
                   theme === 'light' ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.5)'
                 }`,
               }}
-              date={item.date || 'Unknown Date'} // Ensure date is a string
+              date={item.date || 'Unknown Date'}
               icon={
                 typeof item.icon === 'object' && item.icon && 'url' in item.icon ? (
                   <Image
                     src={item.icon.url as string}
                     alt={item.title || 'Experience Icon'}
-                    className="rounded-full"
-                    width={40}
-                    height={40}
+                    className="rounded-full object-cover w-10 h-10 lg:w-[70px] lg:h-[60px]"
+                    width={80}
+                    height={80}
                   />
                 ) : (
                   <Image
@@ -2504,17 +2839,21 @@ export default function ExperiencesClient({ experiences }: { experiences: Experi
                         : 'https://via.placeholder.com/40'
                     }
                     alt={item.title || 'Experience Icon'}
-                    className="rounded-full"
-                    width={40}
-                    height={40}
+                    className="object-cover w-10 h-10 rounded-full lg:w-20 lg:h-20"
+                    width={80}
+                    height={80}
                   />
                 )
               }
               visible={true}
             >
-              <h3 className="vertical-timeline-element-title">{item.title}</h3>
-              <h4 className="vertical-timeline-element-subtitle">{item.location}</h4>
-              <p>{descriptionText}</p>
+              <h3 className="text-lg font-bold text-black vertical-timeline-element-title dark:text-white">
+                {item.title}
+              </h3>
+              <h4 className="text-gray-700 vertical-timeline-element-subtitle text-md dark:text-gray-300">
+                {item.location}
+              </h4>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{descriptionText}</p>
             </VerticalTimelineElement>
           )
         })}
@@ -2522,8 +2861,6 @@ export default function ExperiencesClient({ experiences }: { experiences: Experi
     </section>
   )
 }
-
-
 // src\app\(app)\_components\_experiences\ExperiencesServer.tsx
 // src/app/(app)/_components/_experiences/ExperiencesServer.tsx
 import React from 'react'
@@ -2531,14 +2868,11 @@ import config from '../../../../payload.config'
 import ExperiencesClient from './ExperiencesClient'
 import { Experience } from '../../../../payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
-
 export default async function ExperiencesServer() {
   // Initialize payload
   const payload = await getPayloadHMR({ config })
-
   // Fetch experiences
   const experiences = await payload.find({ collection: 'experiences' })
-
   // Format experiences
   const formattedExperiences: Experience[] = experiences.docs.map((experience) => {
     return {
@@ -2552,24 +2886,18 @@ export default async function ExperiencesServer() {
       updatedAt: experience.updatedAt,
     } as Experience
   })
-
   // Render ExperiencesClient component with the fetched data
   return <ExperiencesClient experiences={formattedExperiences} />
 }
-
-
 // src\app\(app)\_components\_projects\project.tsx
-// src/app/(app)/_components/_projects/project.tsx
+// src\app\(app)\_components\_projects\project.tsx
 'use client'
-
 import { useRef } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card'
-import { Project } from '../../../../../payload-types'
-
+import { Project } from '../../../../payload-types'
 interface ProjectProps extends Project {}
-
 export default function ProjectCard({
   title,
   description,
@@ -2586,7 +2914,6 @@ export default function ProjectCard({
   })
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
-
   // Extract description text
   const descriptionText =
     description?.root.children
@@ -2597,7 +2924,6 @@ export default function ProjectCard({
         return ''
       })
       .join(' ') || ''
-
   return (
     <motion.div
       ref={ref}
@@ -2605,7 +2931,7 @@ export default function ProjectCard({
         scale: scaleProgress,
         opacity: opacityProgress,
       }}
-      className="mb-8 group sm:mb-12 last:mb-0"
+      className="mb-2 group sm:mb-4 last:mb-0"
     >
       <CardContainer containerClassName="w-full h-full grid grid-cols-1" className="h-full">
         <CardBody className="h-full">
@@ -2621,14 +2947,12 @@ export default function ProjectCard({
             )}
           </CardItem>
           <CardItem className="flex flex-col w-full h-full px-5 pt-4 pb-7">
-            <h3 className="text-2xl font-semibold">{title}</h3>
-            <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
-              {descriptionText}
-            </p>
+            <h3 className="text-2xl font-semibold dark:text-white">{title}</h3>
+            <p className="mt-2 leading-relaxed text-gray-700 dark:text-white">{descriptionText}</p>
             <ul className="flex flex-wrap gap-2 mt-4">
               {tags?.map((tag) => (
                 <li
-                  className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
+                  className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:bg-white/10 dark:text-white"
                   key={tag?.id ?? tag.tag} // Ensure each tag has a unique key
                 >
                   {tag?.tag}
@@ -2638,7 +2962,7 @@ export default function ProjectCard({
             {href && (
               <a
                 href={href}
-                className="px-4 py-2 mt-4 text-white transition bg-blue-500 rounded-md hover:bg-blue-600"
+                className="px-4 py-2 mt-4 text-white transition bg-blue-500 rounded-md hover:bg-blue-600 dark:bg-blue-400 dark:hover:bg-blue-500"
               >
                 Visit Website
               </a>
@@ -2649,28 +2973,24 @@ export default function ProjectCard({
     </motion.div>
   )
 }
-
-
 // src\app\(app)\_components\_projects\ProjectsClient.tsx
 // src/app/(app)/_components/ProjectsClient.tsx
 'use client'
-
 import React from 'react'
 import { useSectionInView } from '@/lib/hooks'
 import SectionHeading from '../section-heading'
 import ProjectComponent from './project'
-
-import { Project } from '../../../../../payload-types'
-
+import { Project } from '../../../../payload-types'
 export default function ProjectsClient({ projects }: { projects: Project[] }) {
   const { ref } = useSectionInView('Projects', 0.5)
-
   return (
-    <section ref={ref} id="projects" className="scroll-mt-28 mb-12">
+    <section ref={ref} id="projects" className="scroll-mt-16 mb-16">
+      {' '}
+      {/* Adjusted margins */}
       <SectionHeading>My projects</SectionHeading>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 gap-y-2 sm:grid-cols-2 sm:gap-y-4">
         {' '}
-        {/* Adjust gap as needed */}
+        {/* Adjusted gap */}
         {projects.map((project) => (
           <React.Fragment key={project.id}>
             <ProjectComponent
@@ -2700,8 +3020,6 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
     </section>
   )
 }
-
-
 // src\app\(app)\_components\_projects\ProjectsServer.tsx
 // src/app/(app)/_components/ProjectsServer.tsx
 import React from 'react'
@@ -2709,32 +3027,26 @@ import config from '../../../../payload.config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Project } from '../../../../payload-types'
 import ProjectsClient from './ProjectsClient'
-
 export default async function ProjectsServer() {
   // Initialize payload
   const payload = await getPayloadHMR({ config })
-
   // Fetch projects with pagination
   const limit = 100 // Set a reasonable limit for the number of documents to fetch per page
   let projects: Project[] = []
   let page = 1
-
   while (true) {
     const result = await payload.find({
       collection: 'projects',
       limit,
       page,
     })
-
     // Add the fetched documents to the projects array
     projects = [...projects, ...result.docs]
     page += 1
-
     // Break the loop if the number of documents returned is less than the limit
     if (result.docs.length < limit) {
       break
     }
-
     // Safeguard: break the loop if we have fetched a very large number of documents
     if (page * limit > 10000) {
       console.warn(
@@ -2743,17 +3055,13 @@ export default async function ProjectsServer() {
       break
     }
   }
-
   // Render ProjectsClient component with the fetched data
   return <ProjectsClient projects={projects} />
 }
-
-
 // src\app\(app)\_components\_skills\index.tsx
 // src/app/(app)/_components/_skills/index.tsx
 import React from 'react'
 import SkillsServer from './SkillsServer'
-
 export default function Skills() {
   return (
     <div>
@@ -2761,22 +3069,17 @@ export default function Skills() {
     </div>
   )
 }
-
-
 // src\app\(app)\_components\_skills\SkillsClient.tsx
 // src/app/(app)/_components/_skills/SkillsClient.tsx
 'use client'
-
 import React from 'react'
 import SectionHeading from '../section-heading'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { useSectionInView } from '@/lib/hooks'
-
 type Skill = {
   id: string
   name: string
 }
-
 const fadeInAnimationVariants = {
   initial: { opacity: 0, y: 100 },
   animate: (index: number) => ({
@@ -2785,10 +3088,8 @@ const fadeInAnimationVariants = {
     transition: { delay: 0.05 * index },
   }),
 }
-
 export default function SkillsClient({ skills }: { skills: Skill[] }) {
   const { ref } = useSectionInView('Skills')
-
   return (
     <section
       id="skills"
@@ -2796,10 +3097,10 @@ export default function SkillsClient({ skills }: { skills: Skill[] }) {
       className="mb-12 max-w-[53rem] scroll-mt-28 text-center sm:mb-15"
     >
       <SectionHeading>My skills</SectionHeading>
-      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
+      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800 dark:text-gray-100">
         {skills.map((skill, index) => (
           <motion.li
-            className="px-5 py-3 bg-white borderBlack rounded-xl dark:bg-white/10 dark:text-white/80"
+            className="px-5 py-3 bg-white border-black rounded-xl dark:bg-gray-800 dark:text-gray-200"
             key={index}
             variants={fadeInAnimationVariants}
             initial="initial"
@@ -2814,8 +3115,6 @@ export default function SkillsClient({ skills }: { skills: Skill[] }) {
     </section>
   )
 }
-
-
 // src\app\(app)\_components\_skills\SkillsServer.tsx
 // src/app/(app)/_components/_skills/SkillsServer.tsx
 import React from 'react'
@@ -2823,34 +3122,27 @@ import config from '../../../../payload.config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Skill } from '../../../../payload-types'
 import SkillsClient from './SkillsClient'
-
 export default async function SkillsServer() {
   // Initialize payload
   const payload = await getPayloadHMR({ config })
-
   // Fetch skills with pagination
   const limit = 100 // Set a reasonable limit for the number of documents to fetch per page
   let skills: Skill[] = []
   let page = 1
-
   while (true) {
     const result = await payload.find({
       collection: 'skills',
       limit,
       page,
     })
-
     // Add the fetched documents to the skills array
     skills = [...skills, ...result.docs]
-
     // Break the loop if the number of documents returned is less than the limit
     if (result.docs.length < limit) {
       break
     }
-
     // Increment the page number
     page += 1
-
     // Safeguard: break the loop if we have fetched a very large number of documents
     if (skills.length > 10000) {
       console.warn(
@@ -2859,29 +3151,243 @@ export default async function SkillsServer() {
       break
     }
   }
-
   // Render SkillsClient component with the fetched data
   return <SkillsClient skills={skills} />
 }
-
-
+// src\app\api\restrictedZones\route.ts
+// src/app/api/restrictedZones/route.ts
+import { NextResponse, NextRequest } from 'next/server'
+interface GooglePlace {
+  location: {
+    latitude: number
+    longitude: number
+  }
+  displayName: {
+    text: string
+    languageCode: string
+  }
+  types: string[]
+}
+type RestrictedZone = {
+  lat: number
+  lng: number
+  name: string
+  types: string[]
+  distance: number
+}
+// Function to calculate distance between two points in feet using the Haversine formula
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 6371 // Radius of the Earth in kilometers
+  const dLat = (lat2 - lat1) * (Math.PI / 180)
+  const dLon = (lon2 - lon1) * (Math.PI / 180)
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) *
+      Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  const distance = R * c // Distance in kilometers
+  return distance * 3280.84 // Convert to feet
+}
+// List of keywords to exclude (you can expand this list as needed)
+const exclusionKeywords = ['pier', 'amusement_park', 'tourist_attraction', 'landmark']
+export async function GET(request: NextRequest): Promise<NextResponse> {
+  const { searchParams } = new URL(request.url)
+  const lat = searchParams.get('lat')
+  const lng = searchParams.get('lng')
+  const distance = searchParams.get('distance') ? parseFloat(searchParams.get('distance')!) : 1000
+  if (!lat || !lng) {
+    return NextResponse.json({ error: 'Latitude and longitude are required' }, { status: 400 })
+  }
+  const apiKey = process.env.GOOGLE_API_KEY
+  if (!apiKey) {
+    console.error('Google Maps API key is not set in environment variables')
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    'X-Goog-Api-Key': apiKey,
+    'X-Goog-FieldMask': 'places.displayName,places.location,places.types',
+  })
+  const googleUrl = 'https://places.googleapis.com/v1/places:searchNearby'
+  try {
+    const googleResponse = await fetch(googleUrl, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        locationRestriction: {
+          circle: {
+            center: {
+              latitude: parseFloat(lat),
+              longitude: parseFloat(lng),
+            },
+            radius: 762.0, // 2500 feet in meters
+          },
+        },
+        includedTypes: [
+          'playground',
+          'child_care_agency',
+          'preschool',
+          'primary_school',
+          'secondary_school',
+          'community_center',
+        ],
+        maxResultCount: 20,
+      }),
+    }).then((response) => response.json())
+    console.log('Google Places API response:', JSON.stringify(googleResponse.places, null, 2))
+    const allPlaces = ((googleResponse.places || []) as GooglePlace[])
+      .map((item) => {
+        if (item.location) {
+          return {
+            lat: item.location.latitude,
+            lng: item.location.longitude,
+            name: item.displayName.text,
+            types: item.types,
+            distance: calculateDistance(
+              parseFloat(lat),
+              parseFloat(lng),
+              item.location.latitude,
+              item.location.longitude,
+            ),
+          }
+        } else {
+          return null
+        }
+      })
+      .filter((zone): zone is RestrictedZone => zone !== null)
+      .filter(
+        (zone) =>
+          !zone.types.some((type) => exclusionKeywords.includes(type)) &&
+          !exclusionKeywords.some((keyword) =>
+            zone.name.toLowerCase().includes(keyword.toLowerCase()),
+          ),
+      )
+    const failingItems = allPlaces.filter((zone) => zone.distance <= distance)
+    const isCompliant = failingItems.length === 0
+    return NextResponse.json({
+      isCompliant,
+      nearbyPlaces: allPlaces.sort((a, b) => a.distance - b.distance),
+      failingItems,
+    })
+  } catch (error) {
+    console.error('Error in restrictedZones API:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+}
+// src\app\hooks\fetchRestrictedZones.ts
+// src/app/hooks/fetchRestrictedZones.ts
+export default async function fetchRestrictedZones(item: any, distance: number) {
+  try {
+    const response = await fetch(
+      `/api/restrictedZones?lat=${item.y}&lng=${item.x}&distance=${distance}`,
+      {
+        method: 'GET',
+      },
+    )
+    if (!response.ok) {
+      console.error('Failed to fetch restricted zones', response)
+      return { nearbyPlaces: [], failingItems: [] }
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error('Error fetching restricted zones:', error)
+    return { nearbyPlaces: [], failingItems: [] }
+  }
+}
+// src\app\hooks\useDebounce.ts
+import React from 'react'
+export function useDebounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = React.useState<T>(value)
+  React.useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay ?? 500)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [value, delay])
+  return debouncedValue
+}
+// src\app\hooks\useSearchAddress.ts
+import { useState, useCallback, useEffect } from 'react'
+import { OpenStreetMapProvider } from 'leaflet-geosearch'
+import type { RawResult } from 'leaflet-geosearch/dist/providers/bingProvider.js'
+import type { SearchResult } from 'leaflet-geosearch/dist/providers/provider.js'
+import { useDebounce } from './useDebounce'
+interface UseSearchAddressResult {
+  query: string
+  results: Record<string, Array<SearchResult<RawResult>>>
+  loading: boolean
+  handleSearch: (value: string) => void
+  selectedItem: SearchResult<RawResult> | null
+  setSelectedItem: (item: SearchResult<RawResult> | null) => void
+}
+export const useSearchAddress = (): UseSearchAddressResult => {
+  const [query, setQuery] = useState('')
+  const [results, setResults] = useState<Record<string, Array<SearchResult<RawResult>>>>({})
+  const [loading, setLoading] = useState(false)
+  const [selectedItem, setSelectedItem] = useState<SearchResult<RawResult> | null>(null)
+  const debouncedQuery = useDebounce(query, 500)
+  const groupByType = useCallback(
+    (data: Array<SearchResult<RawResult>>): Record<string, Array<SearchResult<RawResult>>> => {
+      return data.reduce((acc, item) => {
+        const { raw } = item
+        const rawData = raw as unknown as any
+        const type = rawData.class
+        if (!acc[type]) {
+          acc[type] = []
+        }
+        acc[type]?.push(item)
+        return acc
+      }, {} as Record<string, Array<SearchResult<RawResult>>>)
+    },
+    [],
+  )
+  const handleSearch = (value: string): void => {
+    setQuery(value)
+  }
+  useEffect(() => {
+    const fetchResults = async (): Promise<void> => {
+      if (debouncedQuery.length > 2) {
+        setLoading(true)
+        try {
+          const provider = new OpenStreetMapProvider()
+          const searchResults = await provider.search({ query: debouncedQuery })
+          setResults(groupByType(searchResults as unknown as Array<SearchResult<RawResult>>))
+        } catch (error) {
+          console.error('Error fetching address search results:', error)
+          setResults({})
+        } finally {
+          setLoading(false)
+        }
+      } else {
+        setResults({})
+      }
+    }
+    fetchResults()
+  }, [debouncedQuery, groupByType])
+  return {
+    query,
+    results,
+    loading,
+    handleSearch,
+    selectedItem,
+    setSelectedItem,
+  }
+}
 // src\app\my-route\route.ts
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-
 export const GET = async () => {
   const payload = await getPayload({
     config: configPromise,
   })
-
   const data = await payload.find({
     collection: 'users',
   })
-
   return Response.json(data)
 }
-
-
 // src\collections\Documents.ts
 export const Documents = {
   slug: 'documents',
@@ -2894,10 +3400,8 @@ export const Documents = {
     }
   ]
 }
-
 // src\collections\Media.ts
 import type { CollectionConfig } from 'payload'
-
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
@@ -2912,11 +3416,8 @@ export const Media: CollectionConfig = {
   ],
   upload: true,
 }
-
-
 // src\collections\Users.ts
 import type { CollectionConfig } from 'payload'
-
 export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
@@ -2928,8 +3429,6 @@ export const Users: CollectionConfig = {
     // Add more fields as needed
   ],
 }
-
-
 // src\components\Background.tsx
 export const Background = () => {
   return (
@@ -2939,8 +3438,6 @@ export const Background = () => {
     </div>
   )
 }
-
-
 // src\components\Badge.tsx
 export const Badge = () => {
   return (
@@ -2962,33 +3459,24 @@ export const Badge = () => {
     </span>
   )
 }
-
-
 // src\components\Example.tsx
 import React from 'react'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
-
 const Example: React.FC = async () => {
   const payload = await getPayloadHMR({ config: configPromise })
   const url = payload.getAdminURL()
   return <div>The admin panel is running at: {url}</div>
 }
-
 export default Example
-
-
 // src\components\ui\3d-card.tsx
 'use client'
-
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import React, { createContext, useState, useContext, useRef, useEffect, useCallback } from 'react'
-
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
 >(undefined)
-
 export const CardContainer = ({
   children,
   className,
@@ -3000,7 +3488,6 @@ export const CardContainer = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isMouseEntered, setIsMouseEntered] = useState(false)
-
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return
     const { left, top, width, height } = containerRef.current.getBoundingClientRect()
@@ -3008,18 +3495,15 @@ export const CardContainer = ({
     const y = (e.clientY - top - height / 2) / 25
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`
   }
-
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsMouseEntered(true)
     if (!containerRef.current) return
   }
-
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return
     setIsMouseEntered(false)
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`
   }
-
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
@@ -3047,7 +3531,6 @@ export const CardContainer = ({
     </MouseEnterContext.Provider>
   )
 }
-
 export const CardBody = ({
   children,
   className,
@@ -3066,7 +3549,6 @@ export const CardBody = ({
     </div>
   )
 }
-
 export const CardItem = ({
   as: Tag = 'div',
   children,
@@ -3092,7 +3574,6 @@ export const CardItem = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [isMouseEntered] = useMouseEnter()
-
   const handleAnimations = useCallback(() => {
     if (!ref.current) return
     if (isMouseEntered) {
@@ -3101,18 +3582,15 @@ export const CardItem = ({
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`
     }
   }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ])
-
   useEffect(() => {
     handleAnimations()
   }, [handleAnimations])
-
   return (
     <Tag ref={ref} className={cn('w-fit transition duration-200 ease-linear', className)} {...rest}>
       {children}
     </Tag>
   )
 }
-
 // Create a hook to use the context
 export const useMouseEnter = () => {
   const context = useContext(MouseEnterContext)
@@ -3121,15 +3599,11 @@ export const useMouseEnter = () => {
   }
   return context
 }
-
-
 // src\components\ui\button.tsx
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-
 import { cn } from "@/lib/utils"
-
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
@@ -3158,13 +3632,11 @@ const buttonVariants = cva(
     },
   }
 )
-
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
@@ -3178,36 +3650,337 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 )
 Button.displayName = "Button"
-
 export { Button, buttonVariants }
-
-
+// src\components\ui\command.tsx
+"use client"
+import * as React from "react"
+import { type DialogProps } from "@radix-ui/react-dialog"
+import { Command as CommandPrimitive } from "cmdk"
+import { Search } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+const Command = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive
+    ref={ref}
+    className={cn(
+      "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
+      className
+    )}
+    {...props}
+  />
+))
+Command.displayName = CommandPrimitive.displayName
+interface CommandDialogProps extends DialogProps {}
+const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
+  return (
+    <Dialog {...props}>
+      <DialogContent className="overflow-hidden p-0 shadow-lg">
+        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
+          {children}
+        </Command>
+      </DialogContent>
+    </Dialog>
+  )
+}
+const CommandInput = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Input>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
+>(({ className, ...props }, ref) => (
+  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
+    <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+    <CommandPrimitive.Input
+      ref={ref}
+      className={cn(
+        "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )}
+      {...props}
+    />
+  </div>
+))
+CommandInput.displayName = CommandPrimitive.Input.displayName
+const CommandList = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.List
+    ref={ref}
+    className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
+    {...props}
+  />
+))
+CommandList.displayName = CommandPrimitive.List.displayName
+const CommandEmpty = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Empty>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
+>((props, ref) => (
+  <CommandPrimitive.Empty
+    ref={ref}
+    className="py-6 text-center text-sm"
+    {...props}
+  />
+))
+CommandEmpty.displayName = CommandPrimitive.Empty.displayName
+const CommandGroup = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Group>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Group
+    ref={ref}
+    className={cn(
+      "overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground",
+      className
+    )}
+    {...props}
+  />
+))
+CommandGroup.displayName = CommandPrimitive.Group.displayName
+const CommandSeparator = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Separator
+    ref={ref}
+    className={cn("-mx-1 h-px bg-border", className)}
+    {...props}
+  />
+))
+CommandSeparator.displayName = CommandPrimitive.Separator.displayName
+const CommandItem = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:opacity-50",
+      className
+    )}
+    {...props}
+  />
+))
+CommandItem.displayName = CommandPrimitive.Item.displayName
+const CommandShortcut = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      className={cn(
+        "ml-auto text-xs tracking-widest text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+CommandShortcut.displayName = "CommandShortcut"
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+}
+// src\components\ui\dialog.tsx
+"use client"
+import * as React from "react"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import { X } from "lucide-react"
+import { cn } from "@/lib/utils"
+const Dialog = DialogPrimitive.Root
+const DialogTrigger = DialogPrimitive.Trigger
+const DialogPortal = DialogPrimitive.Portal
+const DialogClose = DialogPrimitive.Close
+const DialogOverlay = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Overlay
+    ref={ref}
+    className={cn(
+      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className
+    )}
+    {...props}
+  />
+))
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
+const DialogContent = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DialogPortal>
+    <DialogOverlay />
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <X className="h-4 w-4" />
+        <span className="sr-only">Close</span>
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  </DialogPortal>
+))
+DialogContent.displayName = DialogPrimitive.Content.displayName
+const DialogHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col space-y-1.5 text-center sm:text-left",
+      className
+    )}
+    {...props}
+  />
+)
+DialogHeader.displayName = "DialogHeader"
+const DialogFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      className
+    )}
+    {...props}
+  />
+)
+DialogFooter.displayName = "DialogFooter"
+const DialogTitle = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Title
+    ref={ref}
+    className={cn(
+      "text-lg font-semibold leading-none tracking-tight",
+      className
+    )}
+    {...props}
+  />
+))
+DialogTitle.displayName = DialogPrimitive.Title.displayName
+const DialogDescription = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Description
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+DialogDescription.displayName = DialogPrimitive.Description.displayName
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+}
+// src\components\ui\input.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+export { Input }
+// src\components\ui\popover.tsx
+"use client"
+import * as React from "react"
+import * as PopoverPrimitive from "@radix-ui/react-popover"
+import { cn } from "@/lib/utils"
+const Popover = PopoverPrimitive.Root
+const PopoverTrigger = PopoverPrimitive.Trigger
+const PopoverContent = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+>(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+  <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Content
+      ref={ref}
+      align={align}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        className
+      )}
+      {...props}
+    />
+  </PopoverPrimitive.Portal>
+))
+PopoverContent.displayName = PopoverPrimitive.Content.displayName
+export { Popover, PopoverTrigger, PopoverContent }
+// src\components\ui\skeleton.tsx
+import { cn } from "@/lib/utils"
+function Skeleton({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn("animate-pulse rounded-md bg-muted", className)}
+      {...props}
+    />
+  )
+}
+export { Skeleton }
 // src\context\active-section-context.tsx
 "use client";
-
 import type { SectionName } from "@/lib/types";
 import React, { useState, createContext, useContext } from "react";
-
 type ActiveSectionContextProviderProps = {
   children: React.ReactNode;
 };
-
 type ActiveSectionContextType = {
   activeSection: SectionName;
   setActiveSection: React.Dispatch<React.SetStateAction<SectionName>>;
   timeOfLastClick: number;
   setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
 };
-
 export const ActiveSectionContext =
   createContext<ActiveSectionContextType | null>(null);
-
 export default function ActiveSectionContextProvider({
   children,
 }: ActiveSectionContextProviderProps) {
   const [activeSection, setActiveSection] = useState<SectionName>("Home");
   const [timeOfLastClick, setTimeOfLastClick] = useState(0); // we need to keep track of this to disable the observer temporarily when user clicks on a link
-
   return (
     <ActiveSectionContext.Provider
       value={{
@@ -3221,43 +3994,31 @@ export default function ActiveSectionContextProvider({
     </ActiveSectionContext.Provider>
   );
 }
-
 export function useActiveSectionContext() {
   const context = useContext(ActiveSectionContext);
-
   if (context === null) {
     throw new Error(
       "useActiveSectionContext must be used within an ActiveSectionContextProvider"
     );
   }
-
   return context;
 }
-
-
 // src\context\theme-context.tsx
 "use client";
-
 import React, { useEffect, useState, createContext, useContext } from "react";
-
 type Theme = "light" | "dark";
-
 type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
-
 type ThemeContextType = {
   theme: Theme;
   toggleTheme: () => void;
 };
-
 const ThemeContext = createContext<ThemeContextType | null>(null);
-
 export default function ThemeContextProvider({
   children,
 }: ThemeContextProviderProps) {
   const [theme, setTheme] = useState<Theme>("dark");
-
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -3269,13 +4030,10 @@ export default function ThemeContextProvider({
       document.documentElement.classList.remove("dark");
     }
   };
-
   useEffect(() => {
     const localTheme = window.localStorage.getItem("theme") as Theme | null;
-
     if (localTheme) {
       setTheme(localTheme);
-
       if (localTheme === "dark") {
         document.documentElement.classList.add("dark");
       }
@@ -3284,7 +4042,6 @@ export default function ThemeContextProvider({
       document.documentElement.classList.add("dark");
     }
   }, []);
-
   return (
     <ThemeContext.Provider
       value={{
@@ -3296,18 +4053,13 @@ export default function ThemeContextProvider({
     </ThemeContext.Provider>
   );
 }
-
 export function useTheme() {
   const context = useContext(ThemeContext);
-
   if (context === null) {
     throw new Error("useTheme must be used within a ThemeContextProvider");
   }
-
   return context;
 }
-
-
 // src\email\contact-form-email.tsx
 import React from 'react'
 import {
@@ -3322,12 +4074,10 @@ import {
   Text,
 } from '@react-email/components'
 import { Tailwind } from '@react-email/tailwind'
-
 type ContactFormEmailProps = {
   message: string
   senderEmail: string
 }
-
 export default function ContactFormEmail({ message, senderEmail }: ContactFormEmailProps) {
   return (
     <Html>
@@ -3350,39 +4100,35 @@ export default function ContactFormEmail({ message, senderEmail }: ContactFormEm
     </Html>
   )
 }
-
-
 // src\lib\data.ts
 import React from 'react'
 import { FaAnchor, FaDatabase, FaDotCircle, FaReact } from 'react-icons/fa'
-
 export const links = [
   {
     name: 'Home',
-    hash: '#home',
+    hash: '/#home',
   },
   {
     name: 'About',
-    hash: '#about',
+    hash: '/#about',
   },
   {
     name: 'Projects',
-    hash: '#projects',
+    hash: '/#projects',
   },
   {
     name: 'Skills',
-    hash: '#skills',
+    hash: '/#skills',
   },
   {
     name: 'Experience',
-    hash: '#experience',
+    hash: '/#experience',
   },
   {
-    name: 'Contact',
-    hash: '#contact',
+    name: 'Address Search',
+    hash: '/address-search',
   },
 ] as const
-
 export const experiencesData = [
   {
     title: 'DNN Subject Matter Expert',
@@ -3424,7 +4170,6 @@ export const experiencesData = [
     icon: React.createElement(FaDatabase),
     date: 'Jun 2006 - Oct 2008',
   },
-
   {
     title: 'Senior .NET Developer',
     location: 'Tampa, FL',
@@ -3474,7 +4219,6 @@ export const experiencesData = [
     date: 'Jan 1991 - Oct 1994',
   },
 ]
-
 export const projectsData = [
   {
     title: 'Discordant',
@@ -3484,7 +4228,6 @@ export const projectsData = [
     imageUrl: 'discordantImg',
     href: 'https://discordant.kendev.co/',
   },
-
   {
     title: 'Next LMS',
     description:
@@ -3510,7 +4253,6 @@ export const projectsData = [
     href: 'https://next-commerce-store.kendev.co/',
   },
 ] as const
-
 export const skillsData = [
   // Web Development
   'HTML',
@@ -3525,7 +4267,6 @@ export const skillsData = [
   'Web Design',
   'Responsive Web Design',
   'Cascading Style Sheets (CSS)',
-
   // Backend Development
   'ASP.NET',
   'ASP.NET MVC',
@@ -3540,14 +4281,12 @@ export const skillsData = [
   'MongoDB',
   'Databases',
   'ADO.NET',
-
   // DevOps
   'Git',
   'Windows Server',
   'Windows Server Administration',
   'Internet Information Services (IIS)',
   'Microsoft SQL Server',
-
   // .NET Framework
   'C#',
   '.NET Framework',
@@ -3555,65 +4294,54 @@ export const skillsData = [
   'Visual Studio Code',
   'Visual Basic',
   'DotNetNuke (DNN)',
-
   // Project Management
   'Scrum',
   'Microsoft Project',
   'Visio',
   'Documentation',
-
   // Debugging and Performance
   'Debugging',
   'Dynatrace',
-
   // UI/UX
   'Framer Motion',
   'Tailwind',
   'Redux',
-
   // Version Control
   'Microsoft Visual Source Safe',
 ] as const
-
-
 // src\lib\hooks.ts
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import type { SectionName } from "./types";
-
 export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
   const { ref, inView } = useInView({
     threshold,
   });
   const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
-
   useEffect(() => {
     if (inView && Date.now() - timeOfLastClick > 1000) {
       setActiveSection(sectionName);
     }
   }, [inView, setActiveSection, timeOfLastClick, sectionName]);
-
   return {
     ref,
   };
 }
-
-
 // src\lib\types.ts
-import { links } from "./data";
-
-export type SectionName = (typeof links)[number]["name"];
-
-
+import { links } from './data'
+export type SectionName = (typeof links)[number]['name']
+declare module 'framer-motion' {
+  export interface HTMLMotionProps<T> extends React.HTMLAttributes<T> {
+    className?: string
+  }
+}
 // src\lib\utils.ts
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-
 export function formatTimeDelta(seconds: number) {
   const hours = Math.floor(seconds / 3600)
   const minutes = Math.floor((seconds - hours * 3600) / 60)
@@ -3630,18 +4358,14 @@ export function formatTimeDelta(seconds: number) {
   }
   return parts.join(' ')
 }
-
 export const validateString = (value: unknown, maxLength: number): value is string => {
   if (!value || typeof value !== 'string' || value.length > maxLength) {
     return false
   }
-
   return true
 }
-
 export const getErrorMessage = (error: unknown): string => {
   let message: string
-
   if (error instanceof Error) {
     message = error.message
   } else if (error && typeof error === 'object' && 'message' in error) {
@@ -3651,24 +4375,17 @@ export const getErrorMessage = (error: unknown): string => {
   } else {
     message = 'Something went wrong'
   }
-
   return message
 }
-
-
 // src\scripts\extractData.ts
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
 import fs from 'fs'
-
 const collections = ['users', 'experiences', 'projects', 'skills', 'media', 'pages'] as const
 type Collection = (typeof collections)[number]
-
 export const extractData = async () => {
   const payload = await getPayloadHMR({ config: configPromise })
-
   const data: Record<Collection, any[]> = {} as Record<Collection, any[]>
-
   for (const collection of collections) {
     const result = await payload.find({
       collection,
@@ -3676,18 +4393,13 @@ export const extractData = async () => {
     })
     data[collection] = result.docs
   }
-
   fs.writeFileSync('seed.ts', `export default ${JSON.stringify(data, null, 2)};`, 'utf-8')
-
   console.log('Data extraction complete.')
 }
-
 extractData().catch((err) => {
   console.error(err)
   process.exit(1)
 })
-
-
 // src\scripts\seed.ts
 export default {
   "users": [
@@ -4975,14 +5687,11 @@ export default {
     }
   ]
 };
-
 // src\scripts\seeder.ts
 import { Payload } from 'payload'
 import seedData from './seed' // Adjust the path if needed
-
 const collections = ['experiences', 'projects', 'skills', 'media', 'pages'] as const
 type Collection = (typeof collections)[number]
-
 const getUniqueField = (collection: string) => {
   switch (collection) {
     case 'users':
@@ -5001,14 +5710,11 @@ const getUniqueField = (collection: string) => {
       return 'id' // Default unique field
   }
 }
-
 export const seedDatabase = async (payload: Payload) => {
   const data: Record<Collection, any[]> = seedData as Record<Collection, any[]>
-
   for (const collection of collections) {
     const documents = data[collection]
     const uniqueField = getUniqueField(collection)
-
     for (const document of documents) {
       const existingDocument = await payload.find({
         collection,
@@ -5018,7 +5724,6 @@ export const seedDatabase = async (payload: Payload) => {
           },
         },
       })
-
       if (existingDocument.docs.length === 0) {
         await payload.create({
           collection,
@@ -5031,39 +5736,28 @@ export const seedDatabase = async (payload: Payload) => {
       }
     }
   }
-
   console.log('Database seeded successfully.')
 }
-
 export default seedDatabase
-
-
 // src\scripts\standalone-script.js
 // src\scripts\standalone-script.js
 /**
  * This is an example of a standalone script that loads in the Payload config
  * and uses the Payload Local API to query the database.
  */
-
 import { getPayload } from 'payload'
 import { importConfig } from 'payload/node'
 import 'dotenv/config'
-
 async function run() {
   const awaitedConfig = await importConfig('../../payload.config.ts')
   const payload = await getPayload({ config: awaitedConfig })
-
   const pages = await payload.find({
     collection: 'pages',
   })
-
   console.log(pages)
   process.exit(0)
 }
-
 run().catch(console.error)
-
-
 // src\scripts\tsconfig.ts-node.json
 {
   "compilerOptions": {
@@ -5088,5 +5782,3 @@ run().catch(console.error)
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".next"]
 }
-
-

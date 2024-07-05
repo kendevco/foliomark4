@@ -3,8 +3,14 @@
 
 import React from 'react'
 import SectionHeading from '../section-heading'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { useSectionInView } from '@/lib/hooks'
+
+declare module 'framer-motion' {
+  export interface HTMLMotionProps<T> extends React.HTMLAttributes<T> {
+    className?: string
+  }
+}
 
 type Content = {
   root: {

@@ -1,3 +1,4 @@
+// src\app\(app)\_components\_projects\project.tsx
 'use client'
 
 import { useRef } from 'react'

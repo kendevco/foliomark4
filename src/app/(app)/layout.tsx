@@ -1,3 +1,4 @@
+// src\app\(app)\layout.tsx
 import React from 'react'
 import { Outfit } from 'next/font/google'
 import './globals.scss'
